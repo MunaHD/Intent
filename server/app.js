@@ -12,8 +12,6 @@ const dbParams = require("./lib/db.js");
 const db = new Pool(dbParams);
 db.connect();
 
-const homeRouter = require("./routes/home");
-
 const app = express();
 
 app.use(cors());
@@ -23,7 +21,11 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
+const homeRouter = require("./routes/home");
+const loginRouter = require("./routes/login");
+
 app.use("/", homeRouter);
+app.use("/login", loginRouter);
 
 module.exports = app;
 exports.db = db;
