@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { Modal, Button, Typography, Box } from "@mui/material";
-
+import axios from "axios";
 import "./home.css";
-import { useEffect } from "react";
 
 export default function AddGoal(props) {
   //pass functions that handles the state of the modal
@@ -14,7 +13,16 @@ export default function AddGoal(props) {
 
   //get the data for the goal
   const submitHandler = (e) => {
-    // getGoalData(goalData);
+    const accessToken = localStorage.getItem("accessToken");
+    axios
+      .post(
+        "http://localhost:3002/goals",
+        { goalData },
+        {
+          headers: { authorization: `Bearer ${accessToken}` },
+        }
+      )
+      .catch((err) => console.log(err));
     console.log("GOALDATA", goalData);
   };
   //change the value of the name as user types
