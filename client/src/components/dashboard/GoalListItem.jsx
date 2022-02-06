@@ -13,7 +13,7 @@ import "./home.css";
 export default function Header(props) {
   const { id, name, status, iscomplete, deleteGoal, completeGoal } = props;
 
-  const clickHandler = () => {
+  const deleteHandler = () => {
     deleteGoal(id);
   };
   return (
@@ -24,12 +24,24 @@ export default function Header(props) {
           <Circle completeGoal={completeGoal} status={status} id={id} />
         </CardContent>
         <CardActions className='button-group'>
-          <Button size='small' onClick={clickHandler}>
+          <Button size='small' onClick={deleteHandler} className='buttons'>
             <DeleteForeverIcon style={{ fill: "red" }} />
+            {/* <Typography
+              sx={({ mb: 0.5 }, { fontSize: 8 })}
+              color='text.secondary'
+            >
+              DELETE
+            </Typography> */}
           </Button>
-          <Button size='small'>
+          <Button size='large'></Button>
+          <Button size='small' className='buttons'>
             <NotesIcon />
-            <Typography></Typography>
+            {/* <Typography
+              sx={({ mb: 0.5 }, { fontSize: 8 })}
+              color='text.secondary'
+            >
+              Journal
+            </Typography> */}
           </Button>
         </CardActions>
       </div>
