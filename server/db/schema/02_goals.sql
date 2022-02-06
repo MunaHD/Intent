@@ -8,8 +8,8 @@ CREATE TABLE goals (
   name VARCHAR(255) NOT NULL,
   -- start_date  DATE DEFAULT CURRENT_TIMESTAMP,
   -- end_date DATE NOT NULL,
-  status INTEGER,
-  isComplete BOOLEAN DEFAULT FALSE,
+  status INTEGER DEFAULT 0,
+  category INTEGER NOT NULL,
   user_id INTEGER REFERENCES users(id) ON DELETE CASCADE
 );
 
