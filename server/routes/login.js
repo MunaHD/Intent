@@ -5,6 +5,7 @@ const jwt = require("jsonwebtoken");
 /* authenticate the user */
 const loginRouter = (db) => {
   router.post("/", function (req, res, next) {
+    console.log("here in the login route", req.body.email);
     const userEmail = req.body.email;
 
     // will check to see the type of login coming in and set the query accordingly
@@ -16,11 +17,12 @@ const loginRouter = (db) => {
     return db
       .query(queryString, queryParams)
       .then((data) => {
-        console.log(data.rows);
+        console.log("DATA ROWS---->", data.rows);
         if (req.body.password === data.rows[0].password) {
           const user = {
             id: data.rows[0].id,
             email: data.rows[0].email,
+            name: data.rows[0].name,
           };
           const accessToken = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET);
           res.json({ accessToken: accessToken });
@@ -28,7 +30,7 @@ const loginRouter = (db) => {
           res.send("invalid");
         }
       })
-      .catch((err) => res.send("no email exists"));
+      .catch((err) => res.send("no email"));
   });
 
   return router;
