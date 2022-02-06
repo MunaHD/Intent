@@ -8,7 +8,6 @@ const loginRouter = (db) => {
     console.log("here in the login route", req.body.email);
     const userEmail = req.body.email;
 
-    // will check to see the type of login coming in and set the query accordingly
     const queryString = `
     SELECT * FROM users
     WHERE email = $1;`;
