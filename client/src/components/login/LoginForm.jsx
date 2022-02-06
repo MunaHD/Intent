@@ -6,9 +6,7 @@ import Button from "@material-ui/core/Button";
 import "./login.css";
 
 function LoginForm() {
-  const [user, setUser] = useState({});
   // create state variables for each input
-  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -17,50 +15,34 @@ function LoginForm() {
   const authenticate = () => {
     axios
       .post("http://localhost:3002/login", {
-        name,
         email,
         password,
       })
       .then((res) => {
         //if the password is invalid
         if (res.data === "invalid") {
-          setError("invalid password");
+          setError("invalid");
           //if the email is invalid
-        } else if (res.date === "no email exists") {
-          setError("This email does not exist");
+        } else if (res.data === "no email") {
+          setError("no email");
         } else {
           // save the access token to local storage
           localStorage.setItem("accessToken", res.data.accessToken);
           navigate("/");
+          console.log(res.data);
         }
       });
   };
 
   const submitHandler = (e) => {
     e.preventDefault();
-    setUser((prev) => {
-      return {
-        ...prev,
-        name: e.target.value,
-        email: e.target.value,
-        password: e.target.value,
-      };
-    });
     authenticate();
-    console.log(name, email, password);
+    console.log(email, password);
   };
 
   return (
     <div className='form-page'>
       <form onSubmit={submitHandler} className='form-container'>
-        <TextField
-          id='form-input'
-          label='Name'
-          variant='filled'
-          required
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
         <TextField
           id='form-input'
           label='Email'
@@ -79,9 +61,19 @@ function LoginForm() {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
+        {error === "invalid" && (
+          <p className='invalid'>
+            Sorry that username or password was incorrect!
+          </p>
+        )}
+        {error === "no email" && (
+          <p className='invalid'>
+            Sorry that username or password was incorrect!
+          </p>
+        )}
         <div className='signup-button'>
           <Button type='submit' variant='contained' color='primary'>
-            Signup
+            Login
           </Button>
         </div>
       </form>

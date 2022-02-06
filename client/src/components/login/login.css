@@ -22,3 +22,7 @@
 .signup-button {
   margin-top: 2rem;
 }
+
+.invalid {
+  color: rgb(216, 96, 96);
+}
