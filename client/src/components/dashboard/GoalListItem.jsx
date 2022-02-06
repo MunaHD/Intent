@@ -11,17 +11,23 @@ import Circle from "./Circle";
 import "./home.css";
 
 export default function Header(props) {
-  const { id, name, status, iscomplete, deleteGoal, completeGoal } = props;
-
+  const { id, name, status, category, deleteGoal, completeGoal, updateStatus } =
+    props;
   const deleteHandler = () => {
     deleteGoal(id);
   };
+
   return (
     <Card sx={{ minWidth: 275 }}>
       <div className='goal-card-content'>
         <Typography>{name}</Typography>
         <CardContent className='progress-bar'>
-          <Circle completeGoal={completeGoal} status={status} id={id} />
+          <Circle
+            completeGoal={completeGoal}
+            status={status}
+            id={id}
+            updateStatus={updateStatus}
+          />
         </CardContent>
         <CardActions className='button-group'>
           <Button size='small' onClick={deleteHandler} className='buttons'>

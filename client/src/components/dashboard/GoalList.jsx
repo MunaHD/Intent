@@ -49,6 +49,22 @@ function GoalList() {
     setCompleted(true);
   };
 
+  //update the status of the goal
+  const updateStatus = (id, status) => {
+    const data = { id, status };
+    console.log("DATA -id-status", data);
+    const accessToken = localStorage.getItem("accessToken");
+    axios
+      .put(
+        "http://localhost:3002/goals",
+        { data },
+        {
+          headers: { authorization: `Bearer ${accessToken}` },
+        }
+      )
+      .catch((err) => console.log(err));
+  };
+
   //exit the open modal for succ info
   const exitShow = () => {
     setCompleted(false);
@@ -63,9 +79,10 @@ function GoalList() {
           id={goal.id}
           name={goal.name}
           status={goal.status}
-          isComplete={goal.isComplete}
+          category={goal.category}
           deleteGoal={deleteGoal}
           completeGoal={completeGoal}
+          updateStatus={updateStatus}
         />
       </div>
     );

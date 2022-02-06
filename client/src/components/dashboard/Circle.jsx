@@ -46,7 +46,7 @@ function CircularProgressWithLabel(props) {
 }
 
 export default function Circle(props) {
-  const { status, completeGoal } = props;
+  const { status, completeGoal, updateStatus } = props;
   const [progress, setProgress] = useState(status);
 
   const clickHandler = () => {
@@ -56,6 +56,7 @@ export default function Circle(props) {
     setProgress((prevProgress) =>
       prevProgress >= 100 ? 0 : prevProgress + 20
     );
+    updateStatus(props.id, progress + 20);
   };
 
   return (

@@ -33,8 +33,23 @@ export default function AddGoal(props) {
   };
 
   const changeCategoryHandler = (e) => {
+    let categoryName = "";
+    console.log("CATEGORY", e.target.value);
+    const categoryId = e.target.value;
+    if (categoryId === "1") {
+      categoryName = "Strength";
+    } else if (categoryId === "2") {
+      categoryName = "Cardio";
+    } else if (categoryId === "3") {
+      categoryName = "Flexibility";
+    } else if (categoryId === "4") {
+      categoryName = "Endurance";
+    } else {
+      categoryName = "Speed";
+    }
+
     setGoalData((prev) => {
-      return { ...prev, category: e.target.value };
+      return { ...prev, category: categoryName ? categoryName : categoryId };
     });
   };
 
@@ -90,8 +105,6 @@ export default function AddGoal(props) {
                 <option value='3'>Flexibility</option>
                 <option value='4'>Endurance</option>
                 <option value='5'>Speed</option>
-                <option value='6'>Diet</option>
-                <option value='7'>Nutrition</option>
               </select>
             </div>
             <div className='flex-container'>
