@@ -1,0 +1,45 @@
+/* dashboard holder */
+.dash {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 75%;
+  margin-left: 25%;
+}
+
+/* header */
+.header-holder {
+  margin-bottom: 5rem;
+  width: 80%;
+  background: linear-gradient(64deg, #5272c7, #3f499c);
+}
+
+.card-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: blanchedalmond;
+}
+
+/* goal list item */
+.text-cursor {
+  cursor: pointer !important;
+}
+
+.MuiCircularProgress-root {
+  width: 100px !important;
+  height: 100px !important;
+}
+.MuiCircularProgress-svg {
+  color: green !important;
+  stroke-linecap: round;
+}
+
+/* success modal */
+#modal-show {
+  width: 50%;
+  height: 20vh;
+  border-radius: 20px;
+  border: none;
+  margin-inline: 12.5%;
+}
