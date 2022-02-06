@@ -25,7 +25,7 @@ const homeRouter = require("./routes/home");
 const loginRouter = require("./routes/login");
 
 app.use("/", homeRouter);
-app.use("/login", loginRouter);
+app.use("/login", loginRouter(db));
 
 module.exports = app;
 exports.db = db;
