@@ -7,13 +7,33 @@ const goalsRouter = (db) => {
   router.post("/", authenticateToken, function (req, res, next) {
     const userId = req.user.id;
     const name = req.body.goalData.name;
+    const category = req.body.goalData.category;
     // console.log("DATA ----POST---->", req.body.goalData);
     const queryString = `
-    INSERT INTO goals (name, user_id)
-    VALUES ($1, $2)
+    INSERT INTO goals (name, category, user_id)
+    VALUES ($1, $2, $3)
     RETURNING *;`;
 
-    const queryParams = [name, userId];
+    const queryParams = [name, category, userId];
+    return db
+      .query(queryString, queryParams)
+      .then((data) => {
+        res.json(data.rows);
+        console.log("DATA ROWS", data.rows);
+      })
+      .catch((err) => console.log(err));
+  });
+  router.put("/", authenticateToken, function (req, res, next) {
+    const goalStatus = req.body.data.status;
+    const goalId = req.body.data.id;
+    // console.log("DATA ----POST---->", req.body.goalData);
+    const queryString = `
+    UPDATE goals
+    SET status = $1
+    WHERE id = $2
+    RETURNING *;`;
+
+    const queryParams = [goalStatus, goalId];
     return db
       .query(queryString, queryParams)
       .then((data) => {

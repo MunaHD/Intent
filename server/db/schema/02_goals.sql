@@ -9,7 +9,7 @@ CREATE TABLE goals (
   -- start_date  DATE DEFAULT CURRENT_TIMESTAMP,
   -- end_date DATE NOT NULL,
   status INTEGER DEFAULT 0,
-  category INTEGER NOT NULL,
+  category VARCHAR(255) NOT NULL,
   user_id INTEGER REFERENCES users(id) ON DELETE CASCADE
 );
 
