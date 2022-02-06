@@ -1,26 +1,93 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import GoalListItem from "./GoalListItem";
 import Success from "./success";
+import axios from "axios";
+import "./home.css";
 
 function GoalList() {
   const [completed, setCompleted] = useState(false);
-  //pass the funtion down to circle
-  //to call when the progress bar reaches 100
-  const getProgress = () => {
+  const [goals, setGoals] = useState([]);
+  const [deletedGoal, setDeletedGoal] = useState(false);
+
+  useEffect(() => {
+    // let email = localStorage.getItem("user");
+    const accessToken = localStorage.getItem("accessToken");
+    axios
+      .get("http://localhost:3002/goals", {
+        headers: { authorization: `Bearer ${accessToken}` },
+      })
+      .then((result) => {
+        setGoals(result.data);
+        setDeletedGoal(false);
+      });
+  }, [completed, deletedGoal]);
+
+  const deleteGoal = (id) => {
     //post request to delete the goal
+    const accessToken = localStorage.getItem("accessToken");
+    axios
+      .delete(`http://localhost:3002/goals/delete/${id}`, {
+        headers: { authorization: `Bearer ${accessToken}` },
+      })
+      .then((result) => {
+        setGoals(result.data);
+      });
+    setDeletedGoal(true);
+  };
+
+  const completeGoal = (id) => {
+    //post request to delete the goal
+    const accessToken = localStorage.getItem("accessToken");
+    axios
+      .delete(`http://localhost:3002/goals/delete/${id}`, {
+        headers: { authorization: `Bearer ${accessToken}` },
+      })
+      .then((result) => {
+        setGoals(result.data);
+      });
     //call modal by changing the state to complete
     setCompleted(true);
   };
+
+  //exit the open modal for succ info
   const exitShow = () => {
     setCompleted(false);
   };
 
+  //parse the individual goals and return an component for each
+  const parsedGoals = goals.map((goal) => {
+    return (
+      <div className='goal-card'>
+        <GoalListItem
+          key={goal.id}
+          id={goal.id}
+          name={goal.name}
+          status={goal.status}
+          isComplete={goal.isComplete}
+          deleteGoal={deleteGoal}
+          completeGoal={completeGoal}
+        />
+      </div>
+    );
+  });
+
   return (
     <>
-      {completed ? (
-        <Success exitShow={exitShow} />
+      {completed && !deletedGoal ? (
+        <>
+          <Success exitShow={exitShow} />
+          <div className='goal-holder'>{parsedGoals}</div>
+        </>
       ) : (
-        <GoalListItem getProgress={getProgress} />
+        [
+          <>
+            {parsedGoals.length ? (
+              <div className='goal-holder'>{parsedGoals}</div>
+            ) : (
+              <div>There are no goals</div>
+            )}
+          </>,
+        ]
       )}
     </>
   );
