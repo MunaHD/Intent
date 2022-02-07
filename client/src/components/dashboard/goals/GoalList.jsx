@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import GoalListItem from "./GoalListItem";
-import Success from "./success";
+import Success from "../success";
 import axios from "axios";
-import "./home.css";
+import "../home.css";
 
 function GoalList() {
   const [completed, setCompleted] = useState(false);
@@ -32,7 +32,7 @@ function GoalList() {
       .then((result) => {
         setGoals(result.data);
       });
-    setDeletedGoal(true);
+    setDeletedGoal(!deletedGoal);
   };
 
   const completeGoal = (id) => {

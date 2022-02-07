@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Modal, Button, Typography, Box } from "@mui/material";
 import axios from "axios";
-import "./home.css";
+import "../home.css";
 
 export default function AddGoal(props) {
   //pass functions that handles the state of the modal
