@@ -11,8 +11,21 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import HomeIcon from "@mui/icons-material/Home";
 import NotesIcon from "@mui/icons-material/Notes";
+import { useNavigate } from "react-router-dom";
 
-export default function Sidebar() {
+function Sidebar() {
+  const navigate = useNavigate();
+  // const navigateHome = () => {
+  //   navigate("/hello");
+  // };
+  const itemList = [
+    { text: "Home", icon: <HomeIcon />, onClick: () => navigate("/") },
+    {
+      text: "Journals",
+      icon: <NotesIcon />,
+      onClick: () => navigate("/journals"),
+    },
+  ];
   return (
     <Box sx={{ display: "flex" }}>
       {/* <AppBar
@@ -27,16 +40,18 @@ export default function Sidebar() {
         anchor='left'
       >
         <List>
-          {["Home", "Journals"].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>
-                {index % 2 === 0 ? <HomeIcon /> : <NotesIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
+          {itemList.map((item, index) => {
+            const { text, icon, onClick } = item;
+            return (
+              <ListItem button key={text} onClick={onClick}>
+                {icon && <ListItemIcon>{icon}</ListItemIcon>}
+                <ListItemText primary={text} />
+              </ListItem>
+            );
+          })}
         </List>
       </Drawer>
     </Box>
   );
 }
+export default Sidebar;
