@@ -6,11 +6,10 @@ const journalsRouter = (db) => {
   // get all the journals for a user
   router.get("/", authenticateToken, function (req, res, next) {
     const queryString = `
-    SELECT journals.* FROM journals
+    SELECT journals.*, goals.category FROM journals
     JOIN goals ON journals.goal_id = goals.id
     JOIN users ON journals.user_id = users.id
-    WHERE users.email = $1 
-    RETURNING*;`;
+    WHERE users.email = $1;`;
 
     //AND goals.id = $2 <------ for specific goa;
     const queryParams = [req.user.email];
