@@ -4,12 +4,14 @@ import Theme from "./components/Theme";
 import LoginForm from "./components/login/LoginForm";
 import RegisterForm from "./components/register/RegisterForm";
 import Home from "./components/dashboard/Home";
+import Journals from "./components/dashboard/journals/Journals";
 
 function App() {
   return (
     <div className='App'>
       <Routes>
         <Route path='/' element={<Home />} />
+        <Route path='/journals' element={<Journals />} />
         <Route path='/login' element={<LoginForm />} />
         <Route path='/register' element={<RegisterForm />} />
       </Routes>
