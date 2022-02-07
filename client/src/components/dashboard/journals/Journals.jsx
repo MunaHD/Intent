@@ -8,7 +8,8 @@ function Journals() {
     <>
       <Sidebar />
       <div className='dash'>
-        <div className='goal-list'>
+        <Header />
+        <div className='journal-list'>
           <JournalList />
         </div>
       </div>
