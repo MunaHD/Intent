@@ -1,0 +1,102 @@
+/* dashboard holder */
+.dash {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 75%;
+  margin-left: 25%;
+}
+
+/* header */
+.dash.MuiPaper-root {
+  border-radius: 10% 30% 50% 70%;
+}
+.header-holder {
+  margin-bottom: -3rem;
+  width: 100%;
+  height: 12rem;
+  /* border-radius: 10% 30% 50% 70%; */
+  background: linear-gradient(
+    114deg,
+    #5272c7,
+    #35509b,
+    #3f499c,
+    #3f499c,
+    #35509b,
+    #5272c7
+  );
+  background-size: 800% 800%;
+  animation: gradient 15s ease infinite;
+}
+@keyframes gradient {
+  0% {
+    background-position: 0% 20%;
+  }
+  50% {
+    background-position: 100% 81%;
+  }
+  100% {
+    background-position: 0% 20%;
+  }
+}
+.card-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: blanchedalmond;
+}
+
+/* goal-list */
+.goal-list {
+  padding-top: 5rem;
+  height: 100%;
+  width: 100%;
+  background-color: rgb(249, 252, 255);
+  border-radius: 20px 20px 0px 0px;
+}
+.goal-holder {
+  width: 80%;
+  margin-right: auto;
+  margin-left: auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+.plus-svg {
+  z-index: 1;
+  transform: scale(3.5);
+  background: linear-gradient(64deg, #5272c7, #3f499c);
+  border-radius: 50%;
+  /* margin-top: -2rem; */
+  /* margin-bottom: 4rem; */
+  color: white;
+}
+
+/* goal list item */
+
+.MuiCard-root {
+  min-width: 0px !important;
+}
+.goal-card {
+  margin-bottom: 1.5rem;
+  margin-left: auto;
+  margin-right: auto;
+  width: max-content;
+}
+.goal-card-content {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: rgb(51, 52, 91);
+}
+
+.MuiCardActions-spacing {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 1rem;
+}
