@@ -46,15 +46,15 @@
   color: blanchedalmond;
 }
 
-/* goal-list */
-.goal-list {
+/* journal-list */
+.journal-list {
   padding-top: 5rem;
   height: 100%;
   width: 100%;
   background-color: rgb(249, 252, 255);
   border-radius: 20px 20px 0px 0px;
 }
-.goal-holder {
+.journal-holder {
   width: 80%;
   margin-right: auto;
   margin-left: auto;
@@ -74,29 +74,47 @@
   color: white;
 }
 
-/* goal list item */
+/* journal list item */
 
 .MuiCard-root {
   min-width: 0px !important;
 }
-.goal-card {
+.journal-card {
   margin-bottom: 1.5rem;
   margin-left: auto;
   margin-right: auto;
-  width: max-content;
+  width: 25rem;
 }
-.goal-card-content {
-  margin-top: 1rem;
+.journal-card-content {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   color: rgb(51, 52, 91);
 }
-
-.MuiCardActions-spacing {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  width: 100%;
+.Speed {
+  background: #ffeee8;
+}
+.Flexibility {
+  background: #e7edfc;
+}
+.Strength {
+  background: #e2f2ed;
+}
+.Endurance {
+  background: #faf7e6;
+}
+.Cardio {
+  background: #f2e1fc;
+}
+.journal-date {
+  margin-bottom: 1rem;
+  text-align: center;
+}
+.journal-entry {
+  text-align: center;
+}
+.journal-category {
+  text-align: center;
   margin-top: 1rem;
 }
