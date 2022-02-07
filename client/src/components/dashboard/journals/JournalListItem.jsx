@@ -4,69 +4,46 @@ import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import NotesIcon from "@mui/icons-material/Notes";
-import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
+import moment from "moment";
 
-import "../home.css";
+import "./journals.css";
 
-export default function Header(props) {
-  const { id, name, status, category, deleteGoal, completeGoal, updateStatus } =
-    props;
-  const deleteHandler = () => {
-    deleteGoal(id);
-  };
-
+export default function JournalListItem(props) {
+  const { id, entry, date, category } = props;
   return (
-    <div
-      className={`goal-card ${
-        category === "Speed"
-          ? category
-          : category === "Flexibility"
-          ? category
-          : category === "Strength"
-          ? category
-          : category === "Endurance"
-          ? category
-          : "Cardio"
-      } `}
-    >
-      <Card sx={{ minWidth: 275 }}>
-        <div className='goal-card-content'>
-          <Typography>{name}</Typography>
-          <CardContent
-            id='progress-bar'
-            className={`${
-              category === "Speed"
-                ? category
-                : category === "Flexibility"
-                ? category
-                : category === "Strength"
-                ? category
-                : category === "Endurance"
-                ? category
-                : "Cardio"
-            } `}
-          ></CardContent>
-          <CardActions className='button-group'>
-            <Button size='small' onClick={deleteHandler} className='buttons'>
-              <DeleteForeverIcon style={{ fill: "red" }} />
-              {/* <Typography
-              sx={({ mb: 0.5 }, { fontSize: 8 })}
-              color='text.secondary'
-            >
-              DELETE
-            </Typography> */}
-            </Button>
+    <div>
+      <Card
+        sx={{ minWidth: 275 }}
+        className={`${
+          category === "Speed"
+            ? category
+            : category === "Flexibility"
+            ? category
+            : category === "Strength"
+            ? category
+            : category === "Endurance"
+            ? category
+            : "Cardio"
+        } `}
+      >
+        <div className='journal-card-content'>
+          <CardContent>
             <Typography
               sx={({ mb: 0.5 }, { fontSize: 8 })}
               color='text.secondary'
+              className='journal-date'
+            >
+              {moment(date).format("dddd, MMMM Do YYYY")}
+            </Typography>
+            <Typography className='journal-entry'>{entry}</Typography>
+            <Typography
+              sx={({ mb: 0.5 }, { fontSize: 8 })}
+              color='text.secondary'
+              className='journal-category'
             >
               {category}
             </Typography>
-            <Button size='small' className='buttons'>
-              <NotesIcon />
-            </Button>
-          </CardActions>
+          </CardContent>
         </div>
       </Card>
     </div>
