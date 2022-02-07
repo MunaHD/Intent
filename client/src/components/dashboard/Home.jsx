@@ -1,6 +1,6 @@
 import Header from "./Header";
 import Sidebar from "../sidebar/Sidebar";
-import GoalList from "./GoalList";
+import GoalList from "./goals/GoalList";
 import "./home.css";
 
 function Home() {
@@ -9,7 +9,9 @@ function Home() {
       <Sidebar />
       <div className='dash'>
         <Header />
-        <GoalList />
+        <div className='goal-list'>
+          <GoalList />
+        </div>
       </div>
     </>
   );
