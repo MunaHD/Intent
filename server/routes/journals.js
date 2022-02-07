@@ -9,9 +9,10 @@ const journalsRouter = (db) => {
     SELECT journals.* FROM journals
     JOIN goals ON journals.goal_id = goals.id
     JOIN users ON journals.user_id = users.id
-    WHERE users.email = $1 AND goals.id = $2
+    WHERE users.email = $1 
     RETURNING*;`;
 
+    //AND goals.id = $2 <------ for specific goa;
     const queryParams = [req.user.email];
     return db
       .query(queryString, queryParams)
