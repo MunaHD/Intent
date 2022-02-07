@@ -5,84 +5,35 @@ import axios from "axios";
 import "../home.css";
 
 function GoalList() {
-  const [completed, setCompleted] = useState(false);
-  const [goals, setGoals] = useState([]);
-  const [deletedGoal, setDeletedGoal] = useState(false);
+  const [show, setShow] = useState(false);
+  const [journals, setJournals] = useState([]);
 
   useEffect(() => {
-    // let email = localStorage.getItem("user");
     const accessToken = localStorage.getItem("accessToken");
     axios
-      .get("http://localhost:3002/goals", {
+      .get("http://localhost:3002/journals", {
         headers: { authorization: `Bearer ${accessToken}` },
       })
       .then((result) => {
-        setGoals(result.data);
-        setDeletedGoal(false);
+        setJournals(result.data);
       });
-  }, [completed, deletedGoal]);
-
-  const deleteGoal = (id) => {
-    //post request to delete the goal
-    const accessToken = localStorage.getItem("accessToken");
-    axios
-      .delete(`http://localhost:3002/goals/delete/${id}`, {
-        headers: { authorization: `Bearer ${accessToken}` },
-      })
-      .then((result) => {
-        setGoals(result.data);
-      });
-    setDeletedGoal(!deletedGoal);
-  };
-
-  const completeGoal = (id) => {
-    //post request to delete the goal
-    const accessToken = localStorage.getItem("accessToken");
-    axios
-      .delete(`http://localhost:3002/goals/delete/${id}`, {
-        headers: { authorization: `Bearer ${accessToken}` },
-      })
-      .then((result) => {
-        setGoals(result.data);
-      });
-    //call modal by changing the state to complete
-    setCompleted(true);
-  };
-
-  //update the status of the goal
-  const updateStatus = (id, status) => {
-    const data = { id, status };
-    console.log("DATA -id-status", data);
-    const accessToken = localStorage.getItem("accessToken");
-    axios
-      .put(
-        "http://localhost:3002/goals",
-        { data },
-        {
-          headers: { authorization: `Bearer ${accessToken}` },
-        }
-      )
-      .catch((err) => console.log(err));
-  };
+  }, []);
 
   //exit the open modal for succ info
   const exitShow = () => {
-    setCompleted(false);
+    setShow(false);
   };
 
   //parse the individual goals and return an component for each
-  const parsedGoals = goals.map((goal) => {
+  const parsedJournals = journals.map((journal) => {
     return (
-      <div className='goal-card'>
+      <div className='journal-card'>
         <JournalListItem
-          key={goal.id}
-          id={goal.id}
-          name={goal.name}
-          status={goal.status}
-          category={goal.category}
-          deleteGoal={deleteGoal}
-          completeGoal={completeGoal}
-          updateStatus={updateStatus}
+          key={journal.id}
+          id={journal.id}
+          entry={journal.entry}
+          date={journal.date}
+          category={journal.category}
         />
       </div>
     );
@@ -90,16 +41,16 @@ function GoalList() {
 
   return (
     <>
-      {completed && !deletedGoal ? (
+      {show ? (
         <>
           <Success exitShow={exitShow} />
-          <div className='goal-holder'>{parsedGoals}</div>
+          <div className='goal-holder'>{parsedJournals}</div>
         </>
       ) : (
         [
           <>
-            {parsedGoals.length ? (
-              <div className='goal-holder'>{parsedGoals}</div>
+            {parsedJournals.length ? (
+              <div className='journal-holder'>{parsedJournals}</div>
             ) : (
               <div>There are no goals</div>
             )}
