@@ -1,4 +1,4 @@
-import Header from "../Header";
+import Header from "./HeaderJournal";
 import Sidebar from "../../sidebar/Sidebar";
 import JournalList from "./JournalList";
 import "../home.css";
