@@ -1,11 +1,13 @@
 INSERT INTO choices (label, image)
 VALUES
-('Family', './icons/home.png'),
-('Friends', './icons/friends.png'),
-('Socials', './icons/social-media.png'),
-('Food', './icons/cutlery.png'),
-('Health', './icons/mental-health.png'),
-('Sports', './icons/balls-sports.png');
+('anxiety', 'anxiety.png'),
+('body ache', 'body_ache.png'),
+('embarrassed', 'embarrassed.png'),
+('exhausted', 'exhausted.png'),
+('injury', 'injury.png'),
+('menstration', 'menstration.png'),
+('sick', 'sick.png'),
+('sleepy', 'sleepy.png');
 
 
 

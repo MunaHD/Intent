@@ -1,13 +1,13 @@
 
-INSERT INTO journals (entry, goal_id, user_id)
+INSERT INTO journals (entry,choice, goal_id, user_id)
 VALUES
-('Today, was great.', 1, 1),
-('I found it hard to concentrate.', 1, 1),
-('It was fun.', 2, 1),
-('Still trying', 3, 1),
-('Today, was great.', 4, 1),
-('I found it hard to concentrate.', 1, 2),
-('It was fun.', 5, 1),
-('Still trying', 7, 2);
+('Today, was great.', 'anxiety.png', 1, 1),
+('I found it hard to concentrate.', 'body_ache.png', 1, 1),
+('It was fun.', 'embarrassed.png', 2, 1),
+('Still trying', 'exhausted.png', 3, 1),
+('Today, was great.', 'injury.png', 4, 1),
+('I found it hard to concentrate.', 'sick.png', 1, 2),
+('It was fun.', 'injury.png', 5, 1),
+('Still trying', 'sick.png', 7, 2);
 
 
