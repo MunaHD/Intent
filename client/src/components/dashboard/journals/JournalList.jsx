@@ -34,6 +34,8 @@ function GoalList() {
           entry={journal.entry}
           date={journal.date}
           category={journal.category}
+          goalName={journal.name}
+          emotion={journal.choice}
         />
       </div>
     );
@@ -41,21 +43,10 @@ function GoalList() {
 
   return (
     <>
-      {show ? (
-        <>
-          <Success exitShow={exitShow} />
-          <div className='goal-holder'>{parsedJournals}</div>
-        </>
+      {parsedJournals.length ? (
+        <div className='journal-holder'>{parsedJournals}</div>
       ) : (
-        [
-          <>
-            {parsedJournals.length ? (
-              <div className='journal-holder'>{parsedJournals}</div>
-            ) : (
-              <div>There are no goals</div>
-            )}
-          </>,
-        ]
+        <div>There are no Journals</div>
       )}
     </>
   );
