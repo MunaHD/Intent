@@ -9,42 +9,80 @@ import moment from "moment";
 import "./journals.css";
 
 export default function JournalListItem(props) {
-  const { id, entry, date, category } = props;
+  const { id, entry, date, category, goalName, emotion } = props;
   return (
-    <div>
-      <Card
-        sx={{ minWidth: 275 }}
-        className={`${
-          category === "Speed"
-            ? category
-            : category === "Flexibility"
-            ? category
-            : category === "Strength"
-            ? category
-            : category === "Endurance"
-            ? category
-            : "Cardio"
-        } `}
-      >
-        <div className='journal-card-content'>
-          <CardContent>
-            <Typography
-              sx={({ mb: 0.5 }, { fontSize: 8 })}
-              color='text.secondary'
-              className='journal-date'
-            >
-              {moment(date).format("dddd, MMMM Do YYYY")}
-            </Typography>
-            <Typography className='journal-entry'>{entry}</Typography>
-            <Typography
-              sx={({ mb: 0.5 }, { fontSize: 8 })}
-              color='text.secondary'
-              className='journal-category'
-            >
-              {category}
-            </Typography>
-          </CardContent>
-        </div>
+    <div
+      className={`${
+        category === "Speed"
+          ? category
+          : category === "Flexibility"
+          ? category
+          : category === "Strength"
+          ? category
+          : category === "Endurance"
+          ? category
+          : "Cardio"
+      } `}
+    >
+      <Card sx={{ minWidth: 275 }}>
+        <CardContent>
+          <div className='journal-card-content'>
+            <div className='journal-goal-holder'>
+              <div
+                className={`goal-name ${
+                  category === "Speed"
+                    ? category
+                    : category === "Flexibility"
+                    ? category
+                    : category === "Strength"
+                    ? category
+                    : category === "Endurance"
+                    ? category
+                    : "Cardio"
+                } `}
+              >
+                {goalName}
+              </div>
+              <div
+                className={`journal-emotion ${
+                  category === "Speed"
+                    ? category
+                    : category === "Flexibility"
+                    ? category
+                    : category === "Strength"
+                    ? category
+                    : category === "Endurance"
+                    ? category
+                    : "Cardio"
+                } `}
+              >
+                <img
+                  alt='anxiety'
+                  src={require("./icons/" + emotion)}
+                  className='icon'
+                />
+              </div>
+            </div>
+            <div className='journal-info'>
+              <Typography
+                sx={({ mb: 0.5 }, { fontSize: 8 })}
+                color='text.secondary'
+                className='journal-date'
+              >
+                {moment(date).format("dddd, MMMM Do YYYY")}
+              </Typography>
+              <p className='journal-entry'> {entry} </p>
+            </div>
+            <div className='icon-group'>
+              {/* <img
+                alt='anxiety'
+                src={require("./icons/sleepy.png")}
+                className='icon'
+              /> */}
+            </div>
+          </div>
+        </CardContent>
+        {/* </div> */}
       </Card>
     </div>
   );
