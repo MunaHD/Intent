@@ -11,10 +11,22 @@ import Circle from "./Circle";
 import "../home.css";
 
 export default function Header(props) {
-  const { id, name, status, category, deleteGoal, completeGoal, updateStatus } =
-    props;
+  const {
+    id,
+    name,
+    status,
+    category,
+    deleteGoal,
+    completeGoal,
+    updateStatus,
+    showAddjournal,
+  } = props;
   const deleteHandler = () => {
     deleteGoal(id);
+  };
+
+  const journalHandler = () => {
+    showAddjournal();
   };
 
   return (
@@ -58,12 +70,6 @@ export default function Header(props) {
           <CardActions className='button-group'>
             <Button size='small' onClick={deleteHandler} className='buttons'>
               <DeleteForeverIcon style={{ fill: "red" }} />
-              {/* <Typography
-              sx={({ mb: 0.5 }, { fontSize: 8 })}
-              color='text.secondary'
-            >
-              DELETE
-            </Typography> */}
             </Button>
             <Typography
               sx={({ mb: 0.5 }, { fontSize: 8 })}
@@ -71,7 +77,7 @@ export default function Header(props) {
             >
               {category}
             </Typography>
-            <Button size='small' className='buttons'>
+            <Button size='small' className='buttons' onClick={journalHandler}>
               <NotesIcon />
             </Button>
           </CardActions>
