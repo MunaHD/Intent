@@ -5,6 +5,7 @@ import LoginForm from "./components/login/LoginForm";
 import RegisterForm from "./components/register/RegisterForm";
 import Home from "./components/dashboard/Home";
 import Journals from "./components/dashboard/journals/Journals";
+import "./App.css";
 
 function App() {
   return (
