@@ -13,6 +13,12 @@ function Home() {
           <GoalList />
         </div>
       </div>
+      {/* <div> */}
+      {/* //icon8 */}
+      {/* <a target='_blank' href='https://icons8.com'>
+          Icons8
+        </a>
+      </div> */}
     </>
   );
 }
