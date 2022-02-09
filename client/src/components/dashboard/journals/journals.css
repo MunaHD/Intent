@@ -75,7 +75,6 @@
 }
 
 /* journal list item */
-
 .MuiCard-root {
   min-width: 0px !important;
 }
@@ -83,38 +82,150 @@
   margin-bottom: 1.5rem;
   margin-left: auto;
   margin-right: auto;
-  width: 25rem;
+  width: 100%;
 }
 .journal-card-content {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   color: rgb(51, 52, 91);
+  width: 100%;
 }
-.Speed {
-  background: #ffeee8;
+/* .journal-card .Speed .MuiCard-root {
+  border-top: 30px solid #ffeee8;
 }
-.Flexibility {
-  background: #e7edfc;
+.journal-card .Flexibility .MuiCard-root {
+  border-top: 30px solid #e7edfc;
 }
-.Strength {
-  background: #e2f2ed;
+.journal-card .Strength .MuiCard-root {
+  border-top: 30px solid #e2f2ed;
 }
-.Endurance {
-  background: #faf7e6;
+.journal-card .Endurance .MuiCard-root {
+  border-top: 30px solid #faf7e6;
 }
-.Cardio {
-  background: #f2e1fc;
-}
+.journal-card .Cardio .MuiCard-root {
+  border-top: 30px solid #f2e1fc;
+} */
 .journal-date {
   margin-bottom: 1rem;
-  text-align: center;
+  text-align: start;
 }
 .journal-entry {
-  text-align: center;
+  text-align: start;
+  width: 110%;
+  height: 5rem;
 }
-.journal-category {
+.journal-info {
+  width: 65%;
+}
+.goal-name {
+  text-align: center;
+  width: 70%;
+  padding: 1rem;
+  border-radius: 10px;
+  margin-bottom: 0.5rem;
+}
+.journal-emotion {
+  text-align: center;
+  width: 70%;
+  padding: 0.2rem 1rem 0.2rem 1rem;
+  border-radius: 10px;
+}
+.journal-card-content .Speed {
+  background: #ffeee8;
+}
+.journal-card-content .Flexibility {
+  background: #e7edfc;
+}
+.journal-card-content .Strength {
+  background: #e2f2ed;
+}
+.journal-card-content .Endurance {
+  background: #faf7e6;
+}
+.journal-card-content .Cardio {
+  background: #f2e1fc;
+}
+
+#journal-category {
+  margin-top: -0.5rem;
+  text-align: start;
+  text-transform: uppercase;
+}
+.icon-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.icon {
+  width: 20px;
+  border-radius: 20%;
+  /* background: rgb(225, 225, 225); */
+  padding: 0.2rem;
+  margin-top: 0.2rem;
+  margin-bottom: 0.2rem;
+}
+
+/* add journal modal*/
+#modal-journal-show {
+  width: 50%;
+  height: 85vh;
+  border-radius: 20px;
+  border: none;
+  margin-inline: 12.5%;
+}
+.add-journal-icon-group {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: center;
+}
+.add-journal-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 20%;
+  border: none;
+  border-radius: 10px;
+  margin: 0.5rem;
+  z-index: 9999;
+}
+.add-journal-icon {
+  width: 25px;
+  padding: 0.5rem;
+}
+
+.journal-form {
+  height: max-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.journal-form-label {
+  width: 100%;
+  height: 3rem;
   text-align: center;
   margin-top: 1rem;
+  margin-bottom: 1.5rem;
+  background-color: #5272c7;
+  border-radius: 5px 5px 12px 12px;
+  color: blanchedalmond;
+}
+
+#create-journal-button {
+  background: #3f499c !important;
+}
+.selected {
+  background: rgba(128, 128, 128, 0.332);
+}
+
+#goal {
+  width: 100%;
+  font-size: 1rem;
+  border: none;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid #3f499c;
+  text-align: center;
 }

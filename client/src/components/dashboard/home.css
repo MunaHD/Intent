@@ -49,7 +49,8 @@
 /* goal-list */
 .goal-list {
   padding-top: 5rem;
-  height: 100%;
+  /* veiw heigh is rest of header */
+  height: 80vh;
   width: 100%;
   background-color: rgb(249, 252, 255);
   border-radius: 20px 20px 0px 0px;
@@ -126,10 +127,12 @@
   width: 100%;
   height: 100%;
 }
-
 .css-1rn30mb-MuiCircularProgress-root {
   z-index: 3;
 }
+/* .no-goal-list {
+  height: 100%;
+} */
 
 /* change progress bar color for goal category */
 .goal-card-content .Speed .MuiCircularProgress-svg {
