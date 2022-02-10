@@ -5,21 +5,24 @@ import "./home.css";
 
 function Home() {
   return (
-    <>
-      <Sidebar />
+    <div className='dash-holder'>
+      <div id='dash-side-bar'>
+        <Sidebar />
+      </div>
+
       <div className='dash'>
         <Header />
         <div className='goal-list'>
           <GoalList />
         </div>
-      </div>
-      {/* <div> */}
-      {/* //icon8 */}
-      {/* <a target='_blank' href='https://icons8.com'>
+        {/* <div> */}
+        {/* //icon8 */}
+        {/* <a target='_blank' href='https://icons8.com'>
           Icons8
         </a>
       </div> */}
-    </>
+      </div>
+    </div>
   );
 }
 
