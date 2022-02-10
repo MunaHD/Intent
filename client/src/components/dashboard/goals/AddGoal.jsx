@@ -42,10 +42,8 @@ export default function AddGoal(props) {
       categoryName = "Cardio";
     } else if (categoryId === "3") {
       categoryName = "Flexibility";
-    } else if (categoryId === "4") {
-      categoryName = "Endurance";
     } else {
-      categoryName = "Speed";
+      categoryName = "Endurance";
     }
 
     setGoalData((prev) => {
@@ -104,7 +102,6 @@ export default function AddGoal(props) {
                 <option value='2'>Cardio</option>
                 <option value='3'>Flexibility</option>
                 <option value='4'>Endurance</option>
-                <option value='5'>Speed</option>
               </select>
             </div>
             <div className='flex-container'>
