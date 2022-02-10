@@ -20,15 +20,15 @@ export default function Header() {
   return (
     <>
       {show && <AddGoal exitAddGoal={exitAddGoal} />}
-      <Card sx={{ minWidth: 275 }} className='header-holder'>
-        <div className='card-content'>
-          <CardContent className='progress-bar'>
+      <div className='header-holder'>
+        <Card sx={{ minWidth: 275 }} className='header'>
+          <div className='header-content'>
             <h2>Hi Marian! 👋</h2>
             <p>Today is Monday February, 7th</p>
-          </CardContent>
-        </div>
-      </Card>
-      <AddCircleIcon className='plus-svg' onClick={showAddGoal} />
+          </div>
+        </Card>
+        <AddCircleIcon className='plus-svg' onClick={showAddGoal} />
+      </div>
     </>
   );
 }
