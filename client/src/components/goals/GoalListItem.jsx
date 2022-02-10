@@ -8,7 +8,7 @@ import NotesIcon from "@mui/icons-material/Notes";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 
 import Circle from "./Circle";
-import "../home.css";
+import "./home.css";
 
 export default function Header(props) {
   const {

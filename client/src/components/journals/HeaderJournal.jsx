@@ -3,7 +3,7 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import AddJournal from "./AddJournal";
-import "../home.css";
+import "../goals/home.css";
 import axios from "axios";
 
 export default function Header() {

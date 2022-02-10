@@ -1,7 +1,7 @@
 import Header from "./HeaderJournal";
-import Sidebar from "../../sidebar/Sidebar";
+import Sidebar from "../sidebar/Sidebar";
 import JournalList from "./JournalList";
-import "../home.css";
+import "./journals.css";
 
 function Journals() {
   return (

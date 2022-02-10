@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import JournalListItem from "./JournalListItem";
-import Success from "../success";
+import Success from "../goals/success";
 import axios from "axios";
-import "../home.css";
+import "../goals/home.css";
 
 function GoalList() {
   const [show, setShow] = useState(false);

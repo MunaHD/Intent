@@ -1,6 +1,6 @@
 import Header from "./Header";
 import Sidebar from "../sidebar/Sidebar";
-import GoalList from "./goals/GoalList";
+import GoalList from "./GoalList";
 import "./home.css";
 
 function Home() {

@@ -2,7 +2,7 @@ import { useState } from "react";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
-import AddGoal from "./goals/AddGoal";
+import AddGoal from "./AddGoal";
 import "./home.css";
 
 export default function Header() {
