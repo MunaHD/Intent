@@ -31,7 +31,7 @@ export default function Header(props) {
 
   return (
     <div
-      className={`goal-card ${
+      className={` ${
         category === "Speed"
           ? category
           : category === "Flexibility"

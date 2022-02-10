@@ -101,7 +101,7 @@ function GoalList() {
             {parsedGoals.length ? (
               <div className='goal-holder'>{parsedGoals}</div>
             ) : (
-              <div>There are no goals</div>
+              <div className='no-goal-list'>There are no goals</div>
             )}
           </>,
         ]
