@@ -9,3 +9,12 @@
   background: chartreuse;
   border-radius: 20px;
 } */
+
+.App {
+  display: flex;
+  justify-content: right;
+  border-radius: 20px;
+  width: 90vw;
+  height: 90vh;
+  border-radius: 20px;
+}

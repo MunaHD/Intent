@@ -1,22 +1,41 @@
 /* dashboard holder */
+.dash-holder {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}
 .dash {
+  width: 100%;
+  background-color: rgb(254, 254, 254);
+
+  border-radius: 0px 20px 20px 0px;
+}
+/* sidebar */
+#dash-side-bar .MuiPaper-root {
+  border-radius: 20px 0px 0px 20px;
+  height: 90vh;
+  width: 100%;
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 75%;
-  margin-left: 25%;
+}
+.MuiList-root {
+  padding-top: 150% !important;
 }
 
-/* header */
-.dash.MuiPaper-root {
-  border-radius: 10% 30% 50% 70%;
-}
+/* header-home */
 .header-holder {
-  margin-bottom: -3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.header {
+  display: flex;
+  justify-content: center;
   width: 100%;
-  height: 12rem;
-  /* border-radius: 10% 30% 50% 70%; */
-  background: linear-gradient(
+  /* background: linear-gradient(
     114deg,
     #5272c7,
     #35509b,
@@ -24,7 +43,7 @@
     #3f499c,
     #35509b,
     #5272c7
-  );
+  ); */
   background-size: 800% 800%;
   animation: gradient 15s ease infinite;
 }
@@ -39,68 +58,84 @@
     background-position: 0% 20%;
   }
 }
-.card-content {
+.header-holder .MuiPaper-root {
+  border-radius: 0px 20px 0px 0px;
+  background: #ecf4fe;
+  height: 8rem !important;
+  box-shadow: 0px 1px 15px 0.05px rgba(116, 116, 116, 0.274);
+}
+.header-content {
+  margin-top: -1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  color: blanchedalmond;
+  color: #667187;
 }
 
 /* goal-list */
 .goal-list {
-  padding-top: 5rem;
-  /* veiw heigh is rest of header */
-  height: 80vh;
-  width: 100%;
-  background-color: rgb(249, 252, 255);
-  border-radius: 20px 20px 0px 0px;
+  padding-top: 2rem;
+  height: 85%;
 }
 .goal-holder {
-  width: 80%;
+  width: 95%;
+  height: 85%;
   margin-right: auto;
   margin-left: auto;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
+  overflow: hidden;
+  overflow-y: scroll;
+}
+::-webkit-scrollbar {
+  width: 0;
+  background: transparent;
 }
 .plus-svg {
   z-index: 1;
-  transform: scale(3.5);
-  background: linear-gradient(64deg, #5272c7, #3f499c);
+  transform: scale(2.5);
+  background: #7d8caa;
   border-radius: 50%;
-  /* margin-top: -2rem; */
+  margin-top: -1rem;
   /* margin-bottom: 4rem; */
   color: white;
 }
 
 /* goal list item */
 /* change card color for goal category */
-.goal-card .Speed .MuiCard-root {
-  background: #ffeee8;
-}
 .goal-card .Flexibility .MuiCard-root {
-  background: #e7edfc;
+  margin: 1rem !important;
+  background: #d9f5df;
+  box-shadow: 0px 2px 15px 0.05px #7d8caa61;
 }
 .goal-card .Strength .MuiCard-root {
-  background: #e2f2ed;
+  margin: 1rem !important;
+  background: #c6ebfb;
+  box-shadow: 0px 2px 15px 0.05px #7d8caa61;
 }
 .goal-card .Endurance .MuiCard-root {
-  background: #faf7e6;
+  margin: 1rem !important;
+  background: #ffeced;
+  box-shadow: 0px 2px 15px 0.05px #7d8caa61;
 }
 .goal-card .Cardio .MuiCard-root {
-  background: #f2e1fc;
+  margin: 1rem !important;
+  background: #edd0ff;
+  box-shadow: 0px 2px 15px 0.05px #7d8caa61;
 }
 .MuiCard-root {
   min-width: 0px !important;
 }
-.goal-card {
+/* .goal-card {
   margin-bottom: 1.5rem;
-  margin-left: auto;
-  margin-right: auto;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
   width: max-content;
-}
+  
+} */
 .goal-card-content {
   margin-top: 1rem;
   display: flex;
@@ -127,32 +162,26 @@
   width: 100%;
   height: 100%;
 }
+
 .css-1rn30mb-MuiCircularProgress-root {
   z-index: 3;
 }
-/* .no-goal-list {
-  height: 100%;
-} */
 
 /* change progress bar color for goal category */
-.goal-card-content .Speed .MuiCircularProgress-svg {
-  color: #e9b6a3 !important;
-  stroke-linecap: round;
-}
 .goal-card-content .Flexibility .MuiCircularProgress-svg {
-  color: #b1c0e4 !important;
+  color: #a4ddb5 !important;
   stroke-linecap: round;
 }
 .goal-card-content .Strength .MuiCircularProgress-svg {
-  color: #bcddbf !important;
+  color: #8fcff2 !important;
   stroke-linecap: round;
 }
 .goal-card-content .Endurance .MuiCircularProgress-svg {
-  color: #f5e39d !important;
+  color: #ffc0c6 !important;
   stroke-linecap: round;
 }
 .goal-card-content .Cardio .MuiCircularProgress-svg {
-  color: #ddc2ed !important;
+  color: #d3a6ee !important;
   stroke-linecap: round;
 }
 .MuiCardActions-spacing {
@@ -186,7 +215,7 @@
   margin-inline: 12.5%;
 }
 .form-label {
-  width: 100%;
+  width: 80%;
   height: max-content;
   text-align: center;
   margin-bottom: 2rem;
