@@ -6,7 +6,9 @@ import "../home.css";
 function Journals() {
   return (
     <>
-      <Sidebar />
+      <div id='dash-side-bar'>
+        <Sidebar />
+      </div>
       <div className='dash'>
         <Header />
         <div className='journal-list'>
