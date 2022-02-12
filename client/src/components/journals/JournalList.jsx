@@ -5,7 +5,6 @@ import axios from "axios";
 import "../goals/home.css";
 
 function GoalList() {
-  const [show, setShow] = useState(false);
   const [journals, setJournals] = useState([]);
 
   useEffect(() => {
@@ -19,12 +18,7 @@ function GoalList() {
       });
   }, []);
 
-  //exit the open modal for succ info
-  const exitShow = () => {
-    setShow(false);
-  };
-
-  //parse the individual goals and return an component for each
+  //parse the individual journals and return a component for each
   const parsedJournals = journals.map((journal) => {
     return (
       <div className='journal-card'>
