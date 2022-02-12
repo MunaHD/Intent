@@ -16,9 +16,25 @@ function Sidebar() {
   // };
   const itemList = [
     { text: "Home", icon: <HomeIcon />, onClick: () => navigate("/") },
+    // {
+    //   text: "Journals",
+    //   icon: <NotesIcon />,
+    //   onClick: () => navigate("/journals"),
+    // },
+    {
+      text: "Goals",
+      icon: <img alt='goals' src={require("./icons/goal.png")} />,
+      onClick: () => navigate("/"),
+    },
     {
       text: "Journals",
-      icon: <NotesIcon />,
+      icon: (
+        <img
+          alt='journal'
+          src={require("./icons/journal.png")}
+          className='add-journal-icon'
+        />
+      ),
       onClick: () => navigate("/journals"),
     },
   ];
