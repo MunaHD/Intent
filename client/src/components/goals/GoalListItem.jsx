@@ -10,7 +10,7 @@ import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import Circle from "./Circle";
 import "./home.css";
 
-export default function Header(props) {
+export default function GoalListItem(props) {
   const {
     id,
     name,
@@ -19,14 +19,16 @@ export default function Header(props) {
     deleteGoal,
     completeGoal,
     updateStatus,
-    showAddjournal,
+    openTasks,
+    exitTasks,
   } = props;
+
   const deleteHandler = () => {
     deleteGoal(id);
   };
 
-  const journalHandler = () => {
-    showAddjournal();
+  const taskHandler = () => {
+    openTasks();
   };
 
   return (
@@ -77,7 +79,7 @@ export default function Header(props) {
             >
               {category}
             </Typography>
-            <Button size='small' className='buttons' onClick={journalHandler}>
+            <Button size='small' onClick={taskHandler} className='buttons'>
               <NotesIcon />
             </Button>
           </CardActions>
