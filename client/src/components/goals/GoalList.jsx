@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import GoalListItem from "./GoalListItem";
 import Success from "./success";
+import Tasks from "./Tasks";
 import axios from "axios";
 import "./home.css";
 
@@ -8,6 +9,7 @@ function GoalList() {
   const [completed, setCompleted] = useState(false);
   const [goals, setGoals] = useState([]);
   const [deletedGoal, setDeletedGoal] = useState(false);
+  const [showTasks, setShowTasks] = useState(false);
 
   useEffect(() => {
     // let email = localStorage.getItem("user");
@@ -65,6 +67,13 @@ function GoalList() {
       .catch((err) => console.log(err));
   };
 
+  const openTasks = () => {
+    setShowTasks(true);
+  };
+
+  const exitTasks = () => {
+    setShowTasks(false);
+  };
   //exit the open modal for succ info
   const exitShow = () => {
     setCompleted(false);
@@ -83,6 +92,7 @@ function GoalList() {
           deleteGoal={deleteGoal}
           completeGoal={completeGoal}
           updateStatus={updateStatus}
+          openTasks={openTasks}
         />
       </div>
     );
@@ -90,6 +100,12 @@ function GoalList() {
 
   return (
     <>
+      {showTasks && (
+        <div className='task-holder'>
+          <Tasks exitTasks={exitTasks} />
+        </div>
+      )}
+
       {completed && !deletedGoal ? (
         <>
           <Success exitShow={exitShow} />
