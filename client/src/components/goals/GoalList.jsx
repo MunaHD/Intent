@@ -1,27 +1,34 @@
 import { useState, useEffect } from "react";
 import GoalListItem from "./GoalListItem";
 import Success from "./success";
-import Tasks from "./Tasks";
+import TaskList from "./TaskList";
 import axios from "axios";
 import "./home.css";
 
 function GoalList() {
   const [completed, setCompleted] = useState(false);
   const [goals, setGoals] = useState([]);
+  const [tasks, setTasks] = useState([]);
+  const [filteredTasks, setFilteredTasks] = useState([]);
   const [deletedGoal, setDeletedGoal] = useState(false);
   const [showTasks, setShowTasks] = useState(false);
 
   useEffect(() => {
     // let email = localStorage.getItem("user");
     const accessToken = localStorage.getItem("accessToken");
-    axios
-      .get("http://localhost:3002/goals", {
+    Promise.all([
+      axios.get("http://localhost:3002/goals", {
         headers: { authorization: `Bearer ${accessToken}` },
-      })
-      .then((result) => {
-        setGoals(result.data);
-        setDeletedGoal(false);
-      });
+      }),
+      axios.get("http://localhost:3002/tasks", {
+        headers: { authorization: `Bearer ${accessToken}` },
+      }),
+    ]).then((result) => {
+      const [first, second] = result;
+      setGoals(first.data);
+      setDeletedGoal(false);
+      setTasks(second.data);
+    });
   }, [completed, deletedGoal]);
 
   const deleteGoal = (id) => {
@@ -67,6 +74,13 @@ function GoalList() {
       .catch((err) => console.log(err));
   };
 
+  const getGoalId = (id) => {
+    const filteredTasks = tasks.filter((task) => task.goal_id === id);
+    setFilteredTasks(filteredTasks);
+    console.log("FILTEREDTASKS", filteredTasks);
+    setShowTasks(true);
+  };
+
   const openTasks = () => {
     setShowTasks(true);
   };
@@ -93,6 +107,7 @@ function GoalList() {
           completeGoal={completeGoal}
           updateStatus={updateStatus}
           openTasks={openTasks}
+          getGoalId={getGoalId}
         />
       </div>
     );
@@ -102,7 +117,7 @@ function GoalList() {
     <>
       {showTasks && (
         <div className='task-holder'>
-          <Tasks exitTasks={exitTasks} />
+          <TaskList exitTasks={exitTasks} filteredTasks={filteredTasks} />
         </div>
       )}
 
