@@ -26,12 +26,14 @@ const loginRouter = require("./routes/login");
 const goalsRouter = require("./routes/goals");
 const journalsRouter = require("./routes/journals");
 const emotionsRouter = require("./routes/emotions");
+const tasksRouter = require("./routes/tasks");
 
 app.use("/", homeRouter);
 app.use("/login", loginRouter(db));
 app.use("/goals", goalsRouter(db));
 app.use("/journals", journalsRouter(db));
 app.use("/emotions", emotionsRouter(db));
+app.use("/tasks", tasksRouter(db));
 
 module.exports = app;
 exports.db = db;
