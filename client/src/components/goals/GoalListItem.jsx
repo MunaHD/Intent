@@ -21,6 +21,7 @@ export default function GoalListItem(props) {
     updateStatus,
     openTasks,
     exitTasks,
+    getGoalId,
   } = props;
 
   const deleteHandler = () => {
@@ -28,7 +29,8 @@ export default function GoalListItem(props) {
   };
 
   const taskHandler = () => {
-    openTasks();
+    getGoalId(id);
+    // openTasks();
   };
 
   return (
