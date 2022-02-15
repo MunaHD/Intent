@@ -7,7 +7,7 @@
 }
 .dash {
   width: 100%;
-  background-color: rgb(254, 254, 254);
+  background-color: #f7faff;
   border-radius: 0px 20px 20px 0px;
 }
 /* sidebar */
@@ -19,6 +19,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: #f7faff;
 }
 .MuiList-root {
   padding-top: 150% !important;
@@ -194,7 +195,7 @@
   margin-bottom: 2rem;
   background-color: #5272c7;
   border-radius: 5px 5px 12px 12px;
-  color: blanchedalmond;
+  color: #fff5e7;
 }
 .journal-form {
   height: 100%;
@@ -230,7 +231,8 @@
 }
 
 #create-journal-button {
-  background: #3f499c !important;
+  background: #96a2bc !important;
+  color: #fff5e7;
 }
 
 /* .plus-svg {
@@ -345,6 +347,7 @@
   border-radius: 10px;
   margin: 0.5rem;
   z-index: 9999;
+  background-color: #dde6f1 !important;
 }
 .add-journal-icon {
   width: 25px;
@@ -363,14 +366,11 @@
   text-align: center;
   margin-top: 1rem;
   margin-bottom: 1.5rem;
-  background-color: #5272c7;
+  background-color: #96a2bc;
   border-radius: 5px 5px 12px 12px;
-  color: blanchedalmond;
+  color: #fff5e7;
 }
 
-#create-journal-button {
-  background: #3f499c !important;
-}
 .selected {
   background: rgba(128, 128, 128, 0.332);
 }
@@ -383,3 +383,14 @@
   border-bottom: 1px solid #3f499c;
   text-align: center;
 }
+
+/* #swipe-holder {
+  width: 75%;
+}
+#jounral-accordian {
+  width: 100%;
+}
+
+#jounral-accordian .MuiPaper-root {
+  width: 75%;
+} */
