@@ -394,3 +394,35 @@
 #jounral-accordian .MuiPaper-root {
   width: 75%;
 } */
+.task-form {
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 4rem;
+}
+.task-form-sections {
+  height: 20%;
+  width: 80%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.task-entry {
+  display: flex;
+  align-items: center;
+  text-align: start;
+  width: 100%;
+  height: 2rem;
+  padding-top: 1rem;
+  padding-left: 1rem;
+  border: none;
+  border-bottom: 1px solid #96a2bc;
+}
+#create-task-button {
+  background: #96a2bc !important;
+  color: #fff5e7;
+  margin-top: 0rem !important;
+  height: 3rem !important;
+}
