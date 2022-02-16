@@ -15,12 +15,19 @@ const style = {
   p: 4,
 };
 const TaskListItem = (props) => {
-  const { handleClose, id, details, isCompleted } = props;
+  const { handleClose, id, details, isCompleted, completedTask } = props;
+  const clickHandler = () => {
+    completedTask(id);
+  };
   //parse the individual goals and return an component for each
   return (
     <>
       <div className='task'>
-        <input type='checkbox' className='task-checkbox' />
+        <input
+          type='checkbox'
+          className='task-checkbox'
+          onClick={clickHandler}
+        />
         <Typography>{details}</Typography>
       </div>
     </>

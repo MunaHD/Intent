@@ -6,6 +6,7 @@ import { Divider, Typography } from "@mui/material";
 import TaskListItem from "./TaskListItem";
 import "./home.css";
 import React from "react";
+import AddTask from "./AddTask";
 
 const style = {
   position: "absolute",
@@ -19,10 +20,13 @@ const style = {
   p: 4,
 };
 const TaskList = (props) => {
-  const { exitTasks, filteredTasks } = props;
-  const [completed, setCompleted] = useState(false);
+  const { exitTasks, filteredTasks, setDone, done } = props;
+  // const [completed, setCompleted] = useState(false);
 
   console.log("TASK LIST filteredtasks", filteredTasks);
+
+  const goalId = filteredTasks[0].goal_id;
+  console.log("goal id", goalId);
   const handleClose = () => {
     return exitTasks();
   };
@@ -32,15 +36,17 @@ const TaskList = (props) => {
     // console.log("DATA -id-status", data);
     const accessToken = localStorage.getItem("accessToken");
     axios
-      .post(
-        "http://localhost:3002/tasks/delete",
+      .put(
+        "http://localhost:3002/tasks/complete",
         { data },
         {
           headers: { authorization: `Bearer ${accessToken}` },
         }
       )
+      .then((res) => setDone(!done))
       .catch((err) => console.log(err));
   };
+
   //parse the individual goals and return an component for each
   const parsedTasks = filteredTasks.map((tasks) => {
     return (
@@ -51,6 +57,7 @@ const TaskList = (props) => {
           details={tasks.details}
           isCompleted={tasks.isCompleted}
           handleClose={handleClose}
+          completedTask={completedTask}
         />
         <Divider />
       </div>
@@ -66,6 +73,9 @@ const TaskList = (props) => {
         aria-describedby='modal-modal-description'
       >
         <Box sx={style} id='task-holder'>
+          <div>
+            <AddTask goalId={goalId} />
+          </div>
           <div className='modal-list'>
             <div>{parsedTasks}</div>
           </div>
