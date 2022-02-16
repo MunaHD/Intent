@@ -1,8 +1,11 @@
+import { useState } from "react";
+import axios from "axios";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import { Divider, Typography } from "@mui/material";
 import TaskListItem from "./TaskListItem";
 import "./home.css";
+import React from "react";
 
 const style = {
   position: "absolute",
@@ -17,9 +20,26 @@ const style = {
 };
 const TaskList = (props) => {
   const { exitTasks, filteredTasks } = props;
+  const [completed, setCompleted] = useState(false);
+
   console.log("TASK LIST filteredtasks", filteredTasks);
   const handleClose = () => {
     return exitTasks();
+  };
+
+  const completedTask = (id) => {
+    const data = id;
+    // console.log("DATA -id-status", data);
+    const accessToken = localStorage.getItem("accessToken");
+    axios
+      .post(
+        "http://localhost:3002/tasks/delete",
+        { data },
+        {
+          headers: { authorization: `Bearer ${accessToken}` },
+        }
+      )
+      .catch((err) => console.log(err));
   };
   //parse the individual goals and return an component for each
   const parsedTasks = filteredTasks.map((tasks) => {
