@@ -10,7 +10,7 @@ function GoalList() {
   const [goals, setGoals] = useState([]);
   const [tasks, setTasks] = useState([]);
   const [filteredTasks, setFilteredTasks] = useState([]);
-  const [deletedGoal, setDeletedGoal] = useState(false);
+  const [done, setDone] = useState(false);
   const [showTasks, setShowTasks] = useState(false);
 
   useEffect(() => {
@@ -26,10 +26,10 @@ function GoalList() {
     ]).then((result) => {
       const [first, second] = result;
       setGoals(first.data);
-      setDeletedGoal(false);
+      setDone(false);
       setTasks(second.data);
     });
-  }, [completed, deletedGoal]);
+  }, [completed, done]);
 
   const deleteGoal = (id) => {
     //post request to delete the goal
@@ -41,7 +41,7 @@ function GoalList() {
       .then((result) => {
         setGoals(result.data);
       });
-    setDeletedGoal(!deletedGoal);
+    setDone(!done);
   };
 
   const completeGoal = (id) => {
@@ -117,11 +117,16 @@ function GoalList() {
     <>
       {showTasks && (
         <div className='task-holder'>
-          <TaskList exitTasks={exitTasks} filteredTasks={filteredTasks} />
+          <TaskList
+            exitTasks={exitTasks}
+            filteredTasks={filteredTasks}
+            setDone={setDone}
+            done={done}
+          />
         </div>
       )}
 
-      {completed && !deletedGoal ? (
+      {completed && !done ? (
         <>
           <Success exitShow={exitShow} />
           <div className='goal-holder'>{parsedGoals}</div>
