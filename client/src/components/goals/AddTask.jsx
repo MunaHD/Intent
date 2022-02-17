@@ -4,7 +4,7 @@ import axios from "axios";
 import "../journals/journals.css";
 
 export default function AddTask(props) {
-  const { goalId } = props;
+  const { goalId, addNewTask } = props;
   //pass functions that handles the state of the modal
   const [taskData, setTaskData] = useState({
     goal_id: goalId,
@@ -16,6 +16,7 @@ export default function AddTask(props) {
 
   //get the data for the journal
   const submitHandler = (e) => {
+    e.preventDefault();
     const accessToken = localStorage.getItem("accessToken");
     axios
       .post(
@@ -25,6 +26,9 @@ export default function AddTask(props) {
           headers: { authorization: `Bearer ${accessToken}` },
         }
       )
+      .then((res) => {
+        addNewTask();
+      })
       .catch((err) => console.log(err));
   };
   //change the value of the entry as user types
