@@ -19,18 +19,16 @@ export default function GoalListItem(props) {
     deleteGoal,
     completeGoal,
     updateStatus,
-    openTasks,
-    exitTasks,
     getGoalId,
   } = props;
 
+  // console.log("GOALLISTITEM GOALID", id);
   const deleteHandler = () => {
     deleteGoal(id);
   };
 
   const taskHandler = () => {
     getGoalId(id);
-    // openTasks();
   };
 
   return (
