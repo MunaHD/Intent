@@ -9,8 +9,8 @@ const tasksRouter = (db) => {
     SELECT tasks.* FROM tasks
     JOIN users ON tasks.user_id = users.id
     JOIN goals ON tasks.goal_id = goals.id
-    WHERE users.email = $1 AND tasks.iscompleted = false
-    ORDER BY tasks.id;`;
+    WHERE users.email = $1
+    ORDER BY tasks.id DESC;`;
 
     const queryParams = [req.user.email];
     return db
