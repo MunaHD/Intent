@@ -1,16 +1,38 @@
 import { useState, useEffect } from "react";
 import JournalListItem from "./JournalListItem";
-import GoalIcon from "./GoalIcons";
-import { Stack, Button } from "@mui/material";
+import { Button, Tabs, Tab } from "@mui/material";
+import { createTheme } from "@mui/material/styles";
 import axios from "axios";
 import "../goals/home.css";
 import "./journals.css";
+import { ThemeProvider } from "@emotion/react";
 
+const theme = createTheme({
+  palette: {
+    primary: {
+      light: "#757ce8",
+      main: "#3f50b5",
+      dark: "#002884",
+      contrastText: "#fff",
+    },
+    secondary: {
+      light: "#7d8caa",
+      main: "#7d8caa",
+      dark: "#7d8caa",
+      contrastText: "#fff",
+    },
+  },
+});
 function JournalList() {
   const [show, setShow] = useState({ state: false });
   const [journals, setJournals] = useState([]);
   const [filteredJournals, setFilteredJournals] = useState([]);
   const [goals, setGoals] = useState([]);
+  const [value, setValue] = useState(0);
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
 
   const clickHandler = () => {
     setShow(false);
@@ -72,37 +94,38 @@ function JournalList() {
   });
   const parsedGoals = goals.map((goal) => {
     return (
-      <GoalIcon
-        key={goal.id}
-        id={goal.id}
-        name={goal.name}
-        selectedGoal={selectedGoal}
+      <Tab
+        label={goal.name}
+        value={goal.id}
+        onClick={() => selectedGoal(goal.id)}
       />
     );
   });
 
   return (
-    <>
-      <div className='goal-button-holder'>
-        <div className='button-holder'>
-          <Button
-            className='goal-button'
-            variant='outlined'
-            sx={{ background: "#dde6f1", color: "#33345b" }}
-            onClick={clickHandler}
-          >
-            All
-          </Button>
-        </div>
+    <ThemeProvider theme={theme}>
+      <Tabs
+        value={value}
+        onChange={handleChange}
+        variant='scrollable'
+        scrollButtons
+        allowScrollButtonsMobile
+        aria-label='scrollable force tabs example'
+        textColor='secondary'
+        indicatorColor='secondary'
+      >
+        <Tab label='ALL' value='ALL' onClick={clickHandler} />
         {parsedGoals}
-      </div>
+      </Tabs>
       {show.state
         ? [
             <>
               {filteredJournalForGoal.length ? (
                 <div>{filteredJournalForGoal}</div>
               ) : (
-                <div>There are no journals for this goal</div>
+                <div className='no-journals'>
+                  There are no journals for this goal
+                </div>
               )}
             </>,
           ]
@@ -111,11 +134,11 @@ function JournalList() {
               {parsedJournals.length ? (
                 <div className='journal-holder'>{parsedJournals}</div>
               ) : (
-                <div>There are no Journals</div>
+                <div className='no-journals'>There are no Journals</div>
               )}
             </>,
           ]}
-    </>
+    </ThemeProvider>
   );
 }
 
