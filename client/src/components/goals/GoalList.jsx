@@ -8,27 +8,21 @@ import "./home.css";
 function GoalList() {
   const [completed, setCompleted] = useState(false);
   const [goals, setGoals] = useState([]);
-  const [tasks, setTasks] = useState([]);
-  const [filteredTasks, setFilteredTasks] = useState([]);
   const [done, setDone] = useState(false);
   const [showTasks, setShowTasks] = useState(false);
-
+  const [goalId, setGoalId] = useState(0);
+  console.log("GOALLIST GOAL ID", goalId);
   useEffect(() => {
     // let email = localStorage.getItem("user");
     const accessToken = localStorage.getItem("accessToken");
-    Promise.all([
-      axios.get("http://localhost:3002/goals", {
+    axios
+      .get("http://localhost:3002/goals", {
         headers: { authorization: `Bearer ${accessToken}` },
-      }),
-      axios.get("http://localhost:3002/tasks", {
-        headers: { authorization: `Bearer ${accessToken}` },
-      }),
-    ]).then((result) => {
-      const [first, second] = result;
-      setGoals(first.data);
-      setDone(false);
-      setTasks(second.data);
-    });
+      })
+      .then((result) => {
+        setGoals(result.data);
+        setDone(false);
+      });
   }, [completed, done]);
 
   const deleteGoal = (id) => {
@@ -73,12 +67,10 @@ function GoalList() {
       )
       .catch((err) => console.log(err));
   };
-
+  //change to the curent goal id
   const getGoalId = (id) => {
-    const filteredTasks = tasks.filter((task) => task.goal_id === id);
-    setFilteredTasks(filteredTasks);
-    console.log("FILTEREDTASKS", filteredTasks);
     setShowTasks(true);
+    setGoalId(id);
   };
 
   const openTasks = () => {
@@ -119,9 +111,9 @@ function GoalList() {
         <div className='task-holder'>
           <TaskList
             exitTasks={exitTasks}
-            filteredTasks={filteredTasks}
             setDone={setDone}
             done={done}
+            goalId={goalId}
           />
         </div>
       )}
