@@ -7,6 +7,7 @@ import TaskListItem from "./TaskListItem";
 import "./home.css";
 import React from "react";
 import AddTask from "./AddTask";
+import { useEffect } from "react";
 
 const style = {
   position: "absolute",
@@ -20,20 +21,31 @@ const style = {
   p: 4,
 };
 const TaskList = (props) => {
-  const { exitTasks, filteredTasks, setDone, done } = props;
-  // const [completed, setCompleted] = useState(false);
+  const { exitTasks, goalId } = props;
+  const [completed, setCompleted] = useState(false);
+  const [tasks, setTasks] = useState([]);
+  const [addTask, setAddTask] = useState(false);
 
-  console.log("TASK LIST filteredtasks", filteredTasks);
-
-  const goalId = filteredTasks[0].goal_id;
-  console.log("goal id", goalId);
   const handleClose = () => {
     return exitTasks();
   };
 
+  useEffect(() => {
+    const accessToken = localStorage.getItem("accessToken");
+    axios
+      .get("http://localhost:3002/tasks", {
+        headers: { authorization: `Bearer ${accessToken}` },
+      })
+      .then((result) => {
+        setTasks(result.data);
+        setCompleted(false);
+        setAddTask(false);
+      })
+      .catch((err) => console.log(err));
+  }, [addTask, completed]);
+
   const completedTask = (id) => {
     const data = id;
-    // console.log("DATA -id-status", data);
     const accessToken = localStorage.getItem("accessToken");
     axios
       .put(
@@ -43,11 +55,24 @@ const TaskList = (props) => {
           headers: { authorization: `Bearer ${accessToken}` },
         }
       )
-      .then((res) => setDone(!done))
+      .then((res) => setCompleted(true))
       .catch((err) => console.log(err));
   };
+  const addNewTask = () => {
+    setAddTask(true);
+  };
+  const filteredTasks = tasks.filter(
+    (task) => task.goal_id === goalId && task.iscompleted === false
+  );
+  const completedTasks = tasks.filter(
+    (task) => task.goal_id === goalId && task.iscompleted === true
+  );
+  //   setFilteredTasks(filteredTasks);
 
   //parse the individual goals and return an component for each
+  const parsedCompletedTasks = completedTasks.map((tasks) => {
+    return <div className='completed-task-card'>{tasks.details}</div>;
+  });
   const parsedTasks = filteredTasks.map((tasks) => {
     return (
       <div className='tasks-card'>
@@ -55,8 +80,6 @@ const TaskList = (props) => {
           key={tasks.id}
           id={tasks.id}
           details={tasks.details}
-          isCompleted={tasks.isCompleted}
-          handleClose={handleClose}
           completedTask={completedTask}
         />
         <Divider />
@@ -74,10 +97,26 @@ const TaskList = (props) => {
       >
         <Box sx={style} id='task-holder'>
           <div>
-            <AddTask goalId={goalId} />
+            <AddTask goalId={goalId} addNewTask={addNewTask} />
           </div>
           <div className='modal-list'>
-            <div>{parsedTasks}</div>
+            {parsedTasks.length ? (
+              <div className='tasks'>{parsedTasks}</div>
+            ) : (
+              <div className='no-tasks'> New tasks will appear here </div>
+            )}
+
+            <Divider sx={{ background: "#96a2bc" }} />
+            <div className='completed-task-label'>Completed Tasks</div>
+            <Divider sx={{ background: "#96a2bc" }} />
+            {parsedCompletedTasks.length ? (
+              <div>{parsedCompletedTasks}</div>
+            ) : (
+              <div className='no-tasks-completed'>
+                {" "}
+                Completed tasks will apear here
+              </div>
+            )}
           </div>
         </Box>
       </Modal>
