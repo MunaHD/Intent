@@ -15,7 +15,7 @@ const style = {
   p: 4,
 };
 const TaskListItem = (props) => {
-  const { handleClose, id, details, isCompleted, completedTask } = props;
+  const { id, details, completedTask } = props;
   const clickHandler = () => {
     completedTask(id);
   };
