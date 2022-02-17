@@ -40,6 +40,7 @@ function GoalList() {
 
   const completeGoal = (id) => {
     //post request to delete the goal
+    setCompleted(true);
     const accessToken = localStorage.getItem("accessToken");
     axios
       .delete(`http://localhost:3002/goals/delete/${id}`, {
@@ -47,9 +48,9 @@ function GoalList() {
       })
       .then((result) => {
         setGoals(result.data);
-      });
+      })
+      .catch((err) => console.log(err));
     //call modal by changing the state to complete
-    setCompleted(true);
   };
 
   //update the status of the goal
