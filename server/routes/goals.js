@@ -59,6 +59,23 @@ const goalsRouter = (db) => {
       })
       .catch((err) => console.log(err));
   });
+  // get all the goals names for a user
+  router.get("/names", authenticateToken, function (req, res, next) {
+    const queryString = `
+    SELECT goals.name, goals.id FROM goals
+    JOIN users ON goals.user_id = users.id
+    WHERE users.email = $1
+    ORDER BY goals.id;`;
+
+    const queryParams = [req.user.email];
+    return db
+      .query(queryString, queryParams)
+      .then((data) => {
+        res.json(data.rows);
+        console.log("DATA ROWS", data.rows);
+      })
+      .catch((err) => console.log(err));
+  });
 
   router.delete("/delete/:id", authenticateToken, function (req, res, next) {
     // console.log("here in the delelete goals route");
