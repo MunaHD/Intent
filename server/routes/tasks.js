@@ -10,7 +10,7 @@ const tasksRouter = (db) => {
     JOIN users ON tasks.user_id = users.id
     JOIN goals ON tasks.goal_id = goals.id
     WHERE users.email = $1
-    ORDER BY tasks.id DESC;`;
+    ORDER BY tasks.start_date DESC;`;
 
     const queryParams = [req.user.email];
     return db
