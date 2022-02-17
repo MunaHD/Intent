@@ -5,11 +5,7 @@
   justify-content: space-between;
   width: 100%;
 }
-.dash {
-  width: 100%;
-  background-color: #f7faff;
-  border-radius: 0px 20px 20px 0px;
-}
+
 /* sidebar */
 #dash-side-bar .MuiPaper-root {
   border-radius: 20px 0px 0px 20px;
@@ -79,7 +75,7 @@
 }
 .journal-holder {
   width: 95%;
-  height: 85%;
+  height: 70%;
   margin-right: auto;
   margin-left: auto;
   display: flex;
@@ -102,6 +98,22 @@
   margin-top: -1rem;
   /* margin-bottom: 4rem; */
   color: white;
+}
+.goal-button-holder {
+  display: flex;
+  flex-direction: row;
+  justify-content: revert;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  overflow-x: scroll;
+}
+.button-holder {
+  margin: 0.3rem;
+}
+.goal-button {
+  width: max-content;
+  height: 2.5rem;
 }
 
 /* journal list item */
@@ -259,7 +271,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  color: rgb(51, 52, 91);
+  color: #33345b;
   width: 100%;
 }
 
@@ -292,10 +304,10 @@
   background: #ffeee8;
 }
 .journal-card-content .Flexibility {
-  background: #e7edfc;
+  background: #e2f2ed;
 }
 .journal-card-content .Strength {
-  background: #e2f2ed;
+  background: #e7edfc;
 }
 .journal-card-content .Endurance {
   background: #faf7e6;
@@ -372,7 +384,7 @@
 }
 
 .selected {
-  background: rgba(128, 128, 128, 0.332);
+  background: #80808055;
 }
 
 #goal {
