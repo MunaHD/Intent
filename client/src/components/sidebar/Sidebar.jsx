@@ -6,36 +6,29 @@ import ListItem from "@mui/material/ListItem";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import HomeIcon from "@mui/icons-material/Home";
-import NotesIcon from "@mui/icons-material/Notes";
+import DriveFileRenameOutlineIcon from "@mui/icons-material/DriveFileRenameOutline";
+import LibraryAddCheckIcon from "@mui/icons-material/LibraryAddCheck";
+import LogoutIcon from "@mui/icons-material/Logout";
 import { useNavigate } from "react-router-dom";
 
 function Sidebar() {
   const navigate = useNavigate();
-  // const navigateHome = () => {
-  //   navigate("/hello");
-  // };
   const itemList = [
     { text: "Home", icon: <HomeIcon />, onClick: () => navigate("/") },
-    // {
-    //   text: "Journals",
-    //   icon: <NotesIcon />,
-    //   onClick: () => navigate("/journals"),
-    // },
     {
       text: "Goals",
-      icon: <img alt='goals' src={require("./icons/goal.png")} />,
-      onClick: () => navigate("/"),
+      icon: <LibraryAddCheckIcon />,
+      onClick: () => navigate("/goals"),
     },
     {
       text: "Journals",
-      icon: (
-        <img
-          alt='journal'
-          src={require("./icons/journal.png")}
-          className='add-journal-icon'
-        />
-      ),
+      icon: <DriveFileRenameOutlineIcon />,
       onClick: () => navigate("/journals"),
+    },
+    {
+      text: "Logout",
+      icon: <LogoutIcon />,
+      onClick: () => navigate("/login"),
     },
   ];
   return (
@@ -48,7 +41,7 @@ function Sidebar() {
         anchor='left'
       >
         <List>
-          {itemList.map((item, index) => {
+          {itemList.map((item) => {
             const { text, icon, onClick } = item;
             return (
               <ListItem button key={text} onClick={onClick}>
