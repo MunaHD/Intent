@@ -15,12 +15,6 @@ function Home() {
         <div className='goal-list'>
           <GoalList />
         </div>
-        {/* <div> */}
-        {/* //icon8 */}
-        {/* <a target='_blank' href='https://icons8.com'>
-          Icons8
-        </a>
-      </div> */}
       </div>
     </div>
   );
