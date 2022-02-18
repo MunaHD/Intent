@@ -280,3 +280,11 @@
 .task-checkbox {
   margin-right: 2rem;
 }
+
+/* quote from dash */
+.quote-card {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
