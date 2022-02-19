@@ -11,7 +11,7 @@ function Home() {
         <Sidebar />
       </div>
 
-      <div className='dash'>
+      <div className='dashboard'>
         <div className='quote-card-holder'>
           <Quote />
         </div>
