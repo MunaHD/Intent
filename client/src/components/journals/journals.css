@@ -5,69 +5,6 @@
   justify-content: space-between;
   width: 100%;
 }
-
-/* sidebar */
-#dash-side-bar .MuiPaper-root {
-  border-radius: 20px 0px 0px 20px;
-  height: 90vh;
-  width: 100%;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: #f7faff;
-}
-.MuiList-root {
-  padding-top: 150% !important;
-}
-
-/* header-home */
-.header-holder {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.header {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  /* background: linear-gradient(
-    114deg,
-    #5272c7,
-    #35509b,
-    #3f499c,
-    #3f499c,
-    #35509b,
-    #5272c7
-  ); */
-  background-size: 800% 800%;
-  animation: gradient 15s ease infinite;
-}
-@keyframes gradient {
-  0% {
-    background-position: 0% 20%;
-  }
-  50% {
-    background-position: 100% 81%;
-  }
-  100% {
-    background-position: 0% 20%;
-  }
-}
-.header-holder .MuiPaper-root {
-  border-radius: 0px 20px 0px 0px;
-  background: #ecf4fe;
-  height: 8rem !important;
-  box-shadow: 0px 1px 15px 0.05px rgba(116, 116, 116, 0.274);
-}
-.header-content {
-  margin-top: -1rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  color: #667187;
-}
-
 /* journal-list */
 .journal-list {
   padding-top: 1rem;
@@ -162,15 +99,6 @@
   z-index: -3;
   position: relative;
   border-radius: 50%;
-}
-#circle {
-  color: rgb(255, 255, 255);
-  border-radius: 50%;
-  transform: scale(1.22);
-  box-shadow: 0px 5px 10px 0.05px rgba(0, 0, 0, 0.274);
-  position: absolute;
-  width: 100%;
-  height: 100%;
 }
 
 .css-1rn30mb-MuiCircularProgress-root {
