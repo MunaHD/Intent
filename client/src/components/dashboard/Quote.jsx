@@ -5,10 +5,20 @@ import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
+import { red } from "@mui/material/colors";
 
 export default function Quote() {
   return (
-    <Card sx={{ width: 600, height: "max-content", paddingTop: "2rem" }}>
+    <Card
+      sx={{
+        width: "70%",
+        height: "20vh",
+        // paddingTop: "2rem",
+        borderRadius: "15px",
+        background: "#d9f5df",
+        boxShadow: "5px 5px 0px 2px #f7faff",
+      }}
+    >
       <CardContent>
         <Typography
           sx={{
