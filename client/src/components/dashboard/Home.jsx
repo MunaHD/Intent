@@ -12,7 +12,7 @@ function Home() {
       </div>
 
       <div className='dash'>
-        <div className='quote-card'>
+        <div className='quote-card-holder'>
           <Quote />
         </div>
         <div className='task-badge-holder'>
