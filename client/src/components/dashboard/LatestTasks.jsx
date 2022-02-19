@@ -1,7 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
-import Box from "@mui/material/Box";
-import { Divider, Typography } from "@mui/material";
+import { Divider, Typography, Card, CardContent } from "@mui/material";
 import TaskItem from "./TaskItem";
 import "../goals/home.css";
 import React from "react";
@@ -64,10 +63,6 @@ const TaskList = (props) => {
   );
   //   setFilteredTasks(filteredTasks);
 
-  //parse the individual goals and return an component for each
-  const parsedCompletedTasks = completedTasks.map((tasks) => {
-    return <div className='completed-task-card'>{tasks.details}</div>;
-  });
   const parsedTasks = filteredTasks.map((tasks) => {
     return (
       <div className='tasks-card'>
@@ -83,27 +78,48 @@ const TaskList = (props) => {
   });
 
   return (
-    <Box sx={style} id='task-holder'>
-      <div className='modal-list'>
-        {parsedTasks.length ? (
-          <div className='tasks'>{parsedTasks}</div>
-        ) : (
-          <div className='no-tasks'> New tasks will appear here </div>
-        )}
-
-        <Divider sx={{ background: "#96a2bc" }} />
-        <div className='completed-task-label'>Completed Tasks</div>
-        <Divider sx={{ background: "#96a2bc" }} />
-        {parsedCompletedTasks.length ? (
-          <div>{parsedCompletedTasks}</div>
-        ) : (
-          <div className='no-tasks-completed'>
-            {" "}
-            Completed tasks will apear here
-          </div>
-        )}
-      </div>
-    </Box>
+    <>
+      <Card
+        sx={{
+          width: "55%",
+          height: "100%",
+          marginTop: "1rem",
+          marginLeft: "1.2rem",
+          borderRadius: "15px",
+          overflow: "scroll",
+        }}
+      >
+        <CardContent>
+          <Typography
+            sx={{
+              textAlign: "center",
+              marginBottom: "1rem",
+            }}
+            color='#96a2bc'
+          >
+            This weeks Tasks
+          </Typography>
+          <Divider />
+          <Typography
+            sx={{
+              mb: 1.5,
+              textAlign: "center",
+            }}
+            color='text.secondary'
+          >
+            {parsedTasks.length ? (
+              <div className='tasks'>{parsedTasks}</div>
+            ) : (
+              <div className='no-tasks-completed'>
+                {" "}
+                There are no tasks to complete.
+                <br /> Add a new task directly to each goal.
+              </div>
+            )}
+          </Typography>
+        </CardContent>
+      </Card>
+    </>
   );
 };
 
