@@ -127,9 +127,16 @@ export default function GoalListItem(props) {
               onClick={taskHandler}
               className='notes-icon buttons'
             >
+              <Typography
+                sx={{
+                  fontSize: "0.5rem",
+                  textAlign: "center",
+                }}
+              >
+                TASKS
+              </Typography>
               <NotesIcon />
             </Button>
-
             <Button
               size='small'
               onClick={deleteHandler}
