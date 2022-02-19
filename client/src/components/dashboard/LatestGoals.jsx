@@ -1,12 +1,15 @@
 import { useState, useEffect } from "react";
 import { Divider, Typography, Card, CardContent } from "@mui/material";
 import GoalItem from "./GoalItem";
+import TaskList from "../goals/TaskList";
 import axios from "axios";
 import "../goals/home.css";
 
 function GoalList() {
+  const [showTasks, setShowTasks] = useState(false);
+  const [goalId, setGoalId] = useState(0);
   const [goals, setGoals] = useState([]);
-  console.log("goals", goals);
+
   useEffect(() => {
     // let email = localStorage.getItem("user");
     const accessToken = localStorage.getItem("accessToken");
@@ -17,7 +20,16 @@ function GoalList() {
       .then((result) => {
         setGoals(result.data);
       });
-  }, []); //parse the individual goals and return an component for each
+  }, []);
+
+  const getGoalId = (id) => {
+    setShowTasks(true);
+    setGoalId(id);
+  };
+  const exitTasks = () => {
+    setShowTasks(false);
+  };
+  //parse the individual goals and return an component for each
 
   const parsedGoals = goals.map((goal) => {
     return (
@@ -28,6 +40,7 @@ function GoalList() {
           name={goal.name}
           status={goal.status}
           category={goal.category}
+          getGoalId={getGoalId}
         />
       </div>
     );
@@ -35,6 +48,11 @@ function GoalList() {
 
   return (
     <>
+      {showTasks && (
+        <div className='task-holder'>
+          <TaskList exitTasks={exitTasks} goalId={goalId} />
+        </div>
+      )}
       <Card
         sx={{
           width: "55%",
@@ -67,7 +85,7 @@ function GoalList() {
               {parsedGoals.length ? (
                 <div className='goal-holder'>{parsedGoals}</div>
               ) : (
-                <div className='no-goal-list'>There are no goals</div>
+                <div className='no-goal-list'>You have not set goals yet</div>
               )}
             </>
           </Typography>
