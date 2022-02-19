@@ -10,12 +10,11 @@ import { red } from "@mui/material/colors";
 export default function Quote() {
   return (
     <Card
+      id='quote-card'
       sx={{
         width: "70%",
         height: "20vh",
-        // paddingTop: "2rem",
         borderRadius: "15px",
-        background: "#d9f5df",
         boxShadow: "5px 5px 0px 2px #f7faff",
       }}
     >
@@ -24,6 +23,7 @@ export default function Quote() {
           sx={{
             mb: 1.5,
             textAlign: "center",
+            padding: "1rem",
           }}
           color='text.secondary'
         >
