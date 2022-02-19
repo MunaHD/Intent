@@ -33,7 +33,7 @@ export default function GoalListItem(props) {
 
   return (
     <div
-      className={` ${
+      className={` goal-card-holder ${
         category === "Speed"
           ? category
           : category === "Flexibility"
@@ -45,11 +45,16 @@ export default function GoalListItem(props) {
           : "Cardio"
       } `}
     >
-      <Card sx={{ minWidth: 275 }}>
+      <Card
+        sx={{
+          width: "100%",
+          borderRadius: "15px",
+          display: "flex",
+          justifyContent: "space-between",
+        }}
+      >
         <div className='goal-card-content'>
-          <Typography>{name}</Typography>
           <CardContent
-            id='progress-bar'
             className={`${
               category === "Speed"
                 ? category
@@ -67,20 +72,70 @@ export default function GoalListItem(props) {
               status={status}
               id={id}
               updateStatus={updateStatus}
+              category={category}
             />
           </CardContent>
-          <CardActions className='button-group'>
-            <Button size='small' onClick={deleteHandler} className='buttons'>
-              <DeleteForeverIcon style={{ fill: "red" }} />
-            </Button>
+          <div className='goal-info'>
             <Typography
-              sx={({ mb: 0.5 }, { fontSize: 8 })}
-              color='text.secondary'
+              sx={{
+                textAlign: "center",
+                fontSize: "1rem",
+                marginLeft: "1rem",
+              }}
+              color='#667187'
+            >
+              {name.toUpperCase()}
+            </Typography>
+            <Typography
+              sx={{
+                fontSize: "0.5rem",
+                textAlign: "center",
+                marginLeft: "1rem",
+              }}
+              color='#939393'
             >
               {category}
             </Typography>
-            <Button size='small' onClick={taskHandler} className='buttons'>
+          </div>
+        </div>
+        <div className='action-card'>
+          <CardActions
+            sx={{
+              background: "#f7faff",
+              display: "flex",
+              flexDirection: "column",
+              alignContent: "start",
+              width: "2rem",
+              height: "90%",
+              margin: "0rem",
+              marginLeft: "1rem",
+            }}
+            className={` ${
+              category === "Speed"
+                ? category
+                : category === "Flexibility"
+                ? category
+                : category === "Strength"
+                ? category
+                : category === "Endurance"
+                ? category
+                : "Cardio"
+            } `}
+          >
+            <Button
+              size='small'
+              onClick={taskHandler}
+              className='notes-icon buttons'
+            >
               <NotesIcon />
+            </Button>
+
+            <Button
+              size='small'
+              onClick={deleteHandler}
+              style={{ marginLeft: "0rem" }}
+            >
+              <DeleteForeverIcon style={{ fill: "#b9bfcb" }} />
             </Button>
           </CardActions>
         </div>
