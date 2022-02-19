@@ -53,8 +53,8 @@ export default function Header() {
         />
       )}
       <div className='header-holder'>
-        <Card sx={{ minWidth: 275 }} className='header'></Card>
         <AddCircleIcon className='plus-svg' onClick={showAddJournal} />
+        <Card sx={{ minWidth: 275 }} className='header'></Card>
       </div>
     </>
   );
