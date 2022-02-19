@@ -21,12 +21,7 @@ export default function Header() {
     <>
       {show && <AddGoal exitAddGoal={exitAddGoal} />}
       <div className='header-holder'>
-        <Card sx={{ minWidth: 275 }} className='header'>
-          <div className='header-content'>
-            <h2>Hi Marian! 👋</h2>
-            <p>Today is Monday February, 7th</p>
-          </div>
-        </Card>
+        <Card sx={{ minWidth: 105 }} className='header'></Card>
         <AddCircleIcon className='plus-svg' onClick={showAddGoal} />
       </div>
     </>
