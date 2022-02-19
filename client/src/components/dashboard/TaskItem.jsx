@@ -27,7 +27,14 @@ const TaskListItem = (props) => {
           className='task-checkbox'
           onClick={clickHandler}
         />
-        <Typography>{details}</Typography>
+        <Typography
+          sx={{
+            mb: 1.5,
+            textAlign: "start",
+          }}
+        >
+          {details}
+        </Typography>
       </div>
     </>
   );
