@@ -11,10 +11,10 @@ function Home() {
       </div>
 
       <div className='dash'>
-        <Header />
         <div className='goal-list'>
           <GoalList />
         </div>
+        <Header />
       </div>
     </div>
   );
