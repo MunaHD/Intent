@@ -6,6 +6,7 @@ import CircleOutlinedIcon from "@mui/icons-material/CircleOutlined";
 import "./home.css";
 
 function CircularProgressWithLabel(props) {
+  const { category } = props;
   console.log(props);
   return (
     <>
@@ -23,7 +24,20 @@ function CircularProgressWithLabel(props) {
           //   height: 100,
           // }}
         />
-        <CircleOutlinedIcon id='circle' />
+        <CircleOutlinedIcon
+          id='circle'
+          className={`${
+            category === "Speed"
+              ? category
+              : category === "Flexibility"
+              ? category
+              : category === "Strength"
+              ? category
+              : category === "Endurance"
+              ? category
+              : "Cardio"
+          } `}
+        />
         <Box
           sx={{
             top: 0,
