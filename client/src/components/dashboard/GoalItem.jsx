@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
@@ -6,7 +7,7 @@ import Typography from "@mui/material/Typography";
 import NotesIcon from "@mui/icons-material/Notes";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 
-// import Circle from "./Circle";
+import Circle from "../goals/Circle";
 import "../goals/home.css";
 
 export default function GoalListItem(props) {
@@ -32,7 +33,7 @@ export default function GoalListItem(props) {
 
   return (
     <div
-      className={` ${
+      className={` goal-card-holder ${
         category === "Speed"
           ? category
           : category === "Flexibility"
@@ -44,23 +45,16 @@ export default function GoalListItem(props) {
           : "Cardio"
       } `}
     >
-      <Card sx={{ width: "7rem", height: "5rem" }}>
+      <Card
+        sx={{
+          width: "100%",
+          borderRadius: "15px",
+          display: "flex",
+          justifyContent: "space-between",
+        }}
+      >
         <div className='goal-card-content'>
-          <Typography>{name}</Typography>
-          <CardActions
-            className='button-group'
-            sx={{
-              background: "white",
-              display: "flex",
-              justifyContent: "center",
-            }}
-          >
-            <Typography sx={{ fontSize: 8 }} color='text.secondary'>
-              {category}
-            </Typography>
-          </CardActions>
-          {/* <CardContent
-            id='progress-bar'
+          <CardContent
             className={`${
               category === "Speed"
                 ? category
@@ -72,7 +66,78 @@ export default function GoalListItem(props) {
                 ? category
                 : "Cardio"
             } `}
-          ></CardContent> */}
+          >
+            <Circle
+              completeGoal={completeGoal}
+              status={status}
+              id={id}
+              updateStatus={updateStatus}
+              category={category}
+            />
+          </CardContent>
+          <div className='goal-info'>
+            <Typography
+              sx={{
+                textAlign: "center",
+                fontSize: "1rem",
+                marginLeft: "1rem",
+              }}
+              color='#667187'
+            >
+              {name.toUpperCase()}
+            </Typography>
+            <Typography
+              sx={{
+                fontSize: "0.5rem",
+                textAlign: "center",
+                marginLeft: "1rem",
+              }}
+              color='#939393'
+            >
+              {category}
+            </Typography>
+          </div>
+        </div>
+        <div className='action-card'>
+          <CardActions
+            sx={{
+              background: "#f7faff",
+              display: "flex",
+              flexDirection: "column",
+              alignContent: "start",
+              width: "2rem",
+              height: "90%",
+              margin: "0rem",
+              marginLeft: "1rem",
+            }}
+            className={` ${
+              category === "Speed"
+                ? category
+                : category === "Flexibility"
+                ? category
+                : category === "Strength"
+                ? category
+                : category === "Endurance"
+                ? category
+                : "Cardio"
+            } `}
+          >
+            <Button
+              size='small'
+              onClick={taskHandler}
+              className='notes-icon buttons'
+            >
+              <Typography
+                sx={{
+                  fontSize: "0.5rem",
+                  textAlign: "center",
+                }}
+              >
+                TASKS
+              </Typography>
+              <NotesIcon />
+            </Button>
+          </CardActions>
         </div>
       </Card>
     </div>
