@@ -35,7 +35,7 @@ function Sidebar() {
     <Box sx={{ display: "flex" }}>
       <Drawer
         PaperProps={{
-          sx: { width: "25%" },
+          sx: { width: "25%", backgroundColor: "#f7faff" },
         }}
         variant='permanent'
         anchor='left'
