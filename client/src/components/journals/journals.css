@@ -27,15 +27,6 @@
   width: 0;
   background: transparent;
 }
-.plus-svg {
-  z-index: 1;
-  transform: scale(2.5);
-  background: #7d8caa;
-  border-radius: 50%;
-  margin-top: -1rem;
-  /* margin-bottom: 4rem; */
-  color: white;
-}
 .goal-button-holder {
   display: flex;
   flex-direction: row;
