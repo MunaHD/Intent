@@ -83,13 +83,12 @@ export default function AddJournal(props) {
           <form className='journal-form' onSubmit={submitHandler}>
             {/* goal list */}
             <label className='journal-form-label'>
-              <h3>Which Goal?</h3>
+              <h3>Which goal would you like to journal about?</h3>
             </label>
             <div className='form-sections'>
               <select id='goal' onChange={changeGoalHandler} required>
                 <option disabled selected value=''>
-                  {""}
-                  -- select an option --{""}
+                  {""}- select an option -{""}
                 </option>
                 {goals.map((item) => {
                   const { name, id } = item;
@@ -98,9 +97,24 @@ export default function AddJournal(props) {
                 })}
               </select>
             </div>
-            {/* emotions */}
+            {/* entry */}
             <label className='journal-form-label'>
               <h3>How do you feel?</h3>
+            </label>
+            <div className='form-sections'>
+              <textarea
+                name='entry'
+                placeholder='I feel...'
+                className='journal-entry'
+                // value={journalData.entry}
+                onChange={changeEntryHandler}
+                autocomplete='off'
+                required
+              />
+            </div>
+            {/* emotions */}
+            <label className='journal-form-label'>
+              <h3>Choose an emotion</h3>
             </label>
             <div className='add-journal-icon-group'>
               {emotionUrls.map((item) => {
@@ -124,22 +138,6 @@ export default function AddJournal(props) {
                 );
               })}
             </div>
-            {/* entry */}
-            <label className='journal-form-label'>
-              <h3>Say more about it?</h3>
-            </label>
-            <div className='form-sections'>
-              <textarea
-                name='entry'
-                placeholder='I feel...'
-                className='journal-entry'
-                // value={journalData.entry}
-                onChange={changeEntryHandler}
-                autocomplete='off'
-                required
-              />
-            </div>
-            {error && <p>Please choose an emotion</p>}
             <div className='flex-container'>
               <Button
                 id='create-journal-button'
@@ -153,6 +151,7 @@ export default function AddJournal(props) {
                 Complete
               </Button>
             </div>
+            {error && <p>Please choose an emotion</p>}
           </form>
         </Box>
       </Modal>
