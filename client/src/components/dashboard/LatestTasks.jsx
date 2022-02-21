@@ -22,12 +22,10 @@ const TaskList = (props) => {
   const [tasks, setTasks] = useState([]);
   const [addTask, setAddTask] = useState(false);
 
-  const goalId = 1;
-
   useEffect(() => {
     const accessToken = localStorage.getItem("accessToken");
     axios
-      .get("http://localhost:3002/tasks", {
+      .get("http://localhost:3002/tasks/new", {
         headers: { authorization: `Bearer ${accessToken}` },
       })
       .then((result) => {
@@ -52,18 +50,7 @@ const TaskList = (props) => {
       .then((res) => setCompleted(true))
       .catch((err) => console.log(err));
   };
-  const addNewTask = () => {
-    setAddTask(true);
-  };
-  const filteredTasks = tasks.filter(
-    (task) => task.goal_id === goalId && task.iscompleted === false
-  );
-  const completedTasks = tasks.filter(
-    (task) => task.goal_id === goalId && task.iscompleted === true
-  );
-  //   setFilteredTasks(filteredTasks);
-
-  const parsedTasks = filteredTasks.map((tasks) => {
+  const parsedTasks = tasks.map((tasks) => {
     return (
       <div className='tasks-card'>
         <TaskItem
@@ -110,11 +97,16 @@ const TaskList = (props) => {
             {parsedTasks.length ? (
               <div className='tasks'>{parsedTasks}</div>
             ) : (
-              <div className='no-tasks-completed'>
-                {" "}
+              <Typography
+                sx={{
+                  textAlign: "center",
+                  marginTop: "3rem",
+                }}
+                color='#96a2bc'
+              >
                 There are no tasks to complete.
                 <br /> Add a new task directly to each goal.
-              </div>
+              </Typography>
             )}
           </Typography>
         </CardContent>
