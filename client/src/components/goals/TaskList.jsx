@@ -26,6 +26,7 @@ const TaskList = (props) => {
   const [tasks, setTasks] = useState([]);
   const [addTask, setAddTask] = useState(false);
 
+  // console.log("GOAL ID", goalId);
   const handleClose = () => {
     return exitTasks();
   };
@@ -62,10 +63,10 @@ const TaskList = (props) => {
     setAddTask(true);
   };
   const filteredTasks = tasks.filter(
-    (task) => task.goal_id === goalId && task.iscompleted === false
+    (task) => task.goal_id === goalId && task.is_completed === false
   );
   const completedTasks = tasks.filter(
-    (task) => task.goal_id === goalId && task.iscompleted === true
+    (task) => task.goal_id === goalId && task.is_completed === true
   );
   //   setFilteredTasks(filteredTasks);
 
@@ -73,13 +74,15 @@ const TaskList = (props) => {
   const parsedCompletedTasks = completedTasks.map((tasks) => {
     return <div className='completed-task-card'>{tasks.details}</div>;
   });
-  const parsedTasks = filteredTasks.map((tasks) => {
+  const parsedTasks = filteredTasks.map((task) => {
     return (
       <div className='tasks-card'>
         <TaskListItem
-          key={tasks.id}
-          id={tasks.id}
-          details={tasks.details}
+          key={task.id}
+          id={task.id}
+          details={task.details}
+          date={task.complete_by}
+          created={task.created}
           completedTask={completedTask}
         />
         <Divider />
