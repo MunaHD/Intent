@@ -1,18 +1,21 @@
 import { useState, useEffect } from "react";
-import { Modal, Button, Box } from "@mui/material";
+import { Modal, Button, Box, Divider } from "@mui/material";
 import axios from "axios";
 import "../journals/journals.css";
 
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+
 export default function AddTask(props) {
   const { goalId, addNewTask } = props;
-  //pass functions that handles the state of the modal
+  const [date, setDate] = useState(new Date());
   const [taskData, setTaskData] = useState({
     goal_id: goalId,
     details: "",
+    date,
   });
 
-  const [error, setError] = useState(false);
-  // close the modal
+  console.log("STATE DATE", taskData.date);
 
   //get the data for the journal
   const submitHandler = (e) => {
@@ -37,6 +40,13 @@ export default function AddTask(props) {
       return { ...prev, details: e.target.value };
     });
   };
+  //change the value of the date as user chooses
+  const changeDateHandler = (date) => {
+    setTaskData((prev) => {
+      return { ...prev, date: date };
+    });
+    setDate(date);
+  };
 
   return (
     <>
@@ -51,8 +61,28 @@ export default function AddTask(props) {
             autocomplete='off'
             required
           />
+          <Divider
+            orientation='vertical'
+            style={{
+              height: "1.5rem",
+              width: "1px",
+            }}
+          />
         </div>
-        {error && <p>Please choose an emotion</p>}
+        <div className='date'>
+          <DatePicker
+            selected={date}
+            onChange={(date) => changeDateHandler(date)}
+          />
+          <Divider
+            orientation='horizontal'
+            style={{
+              background: " #96a2bc",
+              width: "100%",
+              position: "relative",
+            }}
+          />
+        </div>
         <div className='flex-container'>
           <Button
             id='create-task-button'
