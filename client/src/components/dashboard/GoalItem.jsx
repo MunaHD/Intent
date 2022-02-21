@@ -5,12 +5,11 @@ import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import NotesIcon from "@mui/icons-material/Notes";
-import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 
 import Circle from "../goals/Circle";
 import "../goals/home.css";
 
-export default function GoalListItem(props) {
+export default function GoalItem(props) {
   const {
     id,
     name,
