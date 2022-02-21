@@ -11,14 +11,15 @@ function GoalList() {
   const [goals, setGoals] = useState([]);
 
   useEffect(() => {
-    // let email = localStorage.getItem("user");
     const accessToken = localStorage.getItem("accessToken");
     axios
       .get("http://localhost:3002/goals", {
         headers: { authorization: `Bearer ${accessToken}` },
       })
       .then((result) => {
-        setGoals(result.data);
+        // console.log("GOALS --->", result);
+        const loadedGoals = result.data.splice(0, 3);
+        setGoals(loadedGoals);
       });
   }, []);
 
@@ -85,7 +86,15 @@ function GoalList() {
               {parsedGoals.length ? (
                 <div className='goal-holder'>{parsedGoals}</div>
               ) : (
-                <div className='no-goal-list'>You have not set goals yet</div>
+                <Typography
+                  sx={{
+                    textAlign: "center",
+                    marginTop: "3rem",
+                  }}
+                  color='#96a2bc'
+                >
+                  You have not set goals yet
+                </Typography>
               )}
             </>
           </Typography>
