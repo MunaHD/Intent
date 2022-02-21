@@ -71,18 +71,11 @@ export default function JournalListItem(props) {
               >
                 {moment(date).format("dddd, MMMM Do YYYY")}
               </Typography>
-              <p className='journal-entry'> {entry} </p>
-            </div>
-            <div className='icon-group'>
-              {/* <img
-                alt='anxiety'
-                src={require("./icons/sleepy.png")}
-                className='icon'
-              /> */}
+
+              <p className='journal-entry'> {entry}</p>
             </div>
           </div>
         </CardContent>
-        {/* </div> */}
       </Card>
     </div>
   );
