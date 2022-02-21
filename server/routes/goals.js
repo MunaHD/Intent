@@ -48,7 +48,7 @@ const goalsRouter = (db) => {
     SELECT goals.* FROM goals
     JOIN users ON goals.user_id = users.id
     WHERE users.email = $1
-    ORDER BY goals.id;`;
+    ORDER BY goals.created DESC;`;
 
     const queryParams = [req.user.email];
     return db
