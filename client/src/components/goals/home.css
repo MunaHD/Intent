@@ -318,7 +318,10 @@
 }
 
 /* tasks modal */
-
+.task-form {
+  display: flex;
+  flex-direction: row;
+}
 #task-holder {
   width: 60vw !important;
   margin-inline: 5rem;
@@ -337,6 +340,20 @@
 }
 .task-checkbox {
   margin-right: 2rem;
+}
+
+.date {
+  margin-right: 1rem;
+}
+
+.react-datepicker__input-container input {
+  height: 100%;
+  border: none;
+  text-align: center;
+  color: #7e7e7e;
+}
+.react-datepicker-wrapper {
+  margin: 1rem;
 }
 
 /* home page*/
