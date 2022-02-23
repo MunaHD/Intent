@@ -85,6 +85,13 @@
   height: 100%;
   width: 90%;
 }
+.no-goal-list {
+  text-align: center;
+  color: #96a2bc;
+  font-size: 1.2rem;
+  margin-top: 4rem;
+  margin-bottom: 1rem;
+}
 .goal-holder {
   width: 95%;
   height: 95%;
