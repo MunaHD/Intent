@@ -45,6 +45,11 @@
   margin-bottom: 1rem;
 }
 
+/* journal-modal */
+.modal-jounral {
+  height: 90vh;
+}
+
 /* journal list item */
 /* change card color for journal category */
 .journal-card .Flexibility .MuiCard-root {
