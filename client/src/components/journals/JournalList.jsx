@@ -24,7 +24,7 @@ const theme = createTheme({
   },
 });
 function JournalList() {
-  const [show, setShow] = useState({ state: false });
+  const [show, setShow] = useState({ state: false, type: "goal" });
   const [journals, setJournals] = useState([]);
   const [filteredJournals, setFilteredJournals] = useState([]);
   const [goals, setGoals] = useState([]);
@@ -117,7 +117,7 @@ function JournalList() {
         <Tab label='ALL' value='ALL' onClick={clickHandler} />
         {parsedGoals}
       </Tabs>
-      {show.state
+      {show.state && show.type === "goal"
         ? [
             <>
               {filteredJournalForGoal.length ? (
