@@ -1,10 +1,10 @@
 INSERT INTO choices (label, image)
 VALUES
-('anxiety', 'anxiety.png'),
-('body ache', 'body_ache.png'),
+('anxiious', 'anxious.png'),
+('aching', 'aching.png'),
 ('embarrassed', 'embarrassed.png'),
 ('exhausted', 'exhausted.png'),
-('injury', 'injury.png'),
+('injured', 'injured.png'),
 ('menstration', 'menstration.png'),
 ('sick', 'sick.png'),
 ('sleepy', 'sleepy.png');
