@@ -1,4 +1,4 @@
-import * as React from "react";
+import { useEffect, useState } from "react";
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
@@ -6,8 +6,25 @@ import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { red } from "@mui/material/colors";
+import axios from "axois";
 
 export default function Quote() {
+  const [quote, setQuote] = useState([]);
+  console.log("QUOTE", quote);
+  useEffect(() => {
+    const accessToken = localStorage.getItem("accessToken");
+    axios
+      .get(
+        "https://zenquotes.io/api/quotes/[YOUR_API_KEY]&keyword=happiness ",
+        {
+          headers: { authorization: `Bearer ${accessToken}` },
+        }
+      )
+      .then((result) => {
+        setQuote(result.rows[0].h);
+      })
+      .catch((err) => console.log(err));
+  }, []);
   return (
     <Card
       id='quote-card'
