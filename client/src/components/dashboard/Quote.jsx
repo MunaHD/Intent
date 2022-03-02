@@ -6,22 +6,28 @@ import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { red } from "@mui/material/colors";
-import axios from "axois";
+import axios from "axios";
 
 export default function Quote() {
   const [quote, setQuote] = useState([]);
   console.log("QUOTE", quote);
+  const api_url = "https://zenquotes.io/api/quotes/";
+
+  async function getapi(url) {
+    const response = await fetch(url);
+    var data = await response.json();
+    console.log(data);
+  }
+
+  getapi(api_url);
+
+  // https://zenquotes.io/api/quotes/[YOUR_API_KEY]&keyword=happiness
   useEffect(() => {
-    const accessToken = localStorage.getItem("accessToken");
     axios
-      .get(
-        "https://zenquotes.io/api/quotes/[YOUR_API_KEY]&keyword=happiness ",
-        {
-          headers: { authorization: `Bearer ${accessToken}` },
-        }
-      )
+      .get("https://zenquotes.io/api/quotes")
       .then((result) => {
-        setQuote(result.rows[0].h);
+        console.log("result", result);
+        setQuote(result);
       })
       .catch((err) => console.log(err));
   }, []);
