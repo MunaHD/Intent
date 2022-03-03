@@ -11,18 +11,18 @@ export default function AddJournal(props) {
     choice: "",
     entry: "",
   });
-  const [selected, setSelected] = useState({ imageUrl: "" });
   const [error, setError] = useState(false);
+
   // close the modal
   const handleClose = () => exitAddJournal();
 
   //get the data for the journal
   const submitHandler = (e) => {
-    if (Object.values(journalData).some((x) => x === "")) {
-      e.preventDefault();
-      setError(true);
-      return;
-    }
+    // if (Object.values(journalData).some((x) => x === "")) {
+    //   e.preventDefault();
+    //   setError(true);
+    //   return;
+    // }
     const accessToken = localStorage.getItem("accessToken");
     axios
       .post(
@@ -48,13 +48,10 @@ export default function AddJournal(props) {
   };
 
   //change the emotion once clicked and make it shaded
-  const handleEmotionInput = (image) => {
-    setError(false);
+  const handleEmotionInput = (e) => {
+    // setError(false);
     setJournalData((prev) => {
-      return { ...prev, choice: image };
-    });
-    setSelected((prev) => {
-      return { ...prev, imageUrl: image };
+      return { ...prev, choice: e.target.value ? e.target.value : e.target.id };
     });
   };
 
@@ -96,12 +93,12 @@ export default function AddJournal(props) {
                   return <option value={id}>{name}</option>;
                 })}
               </select>
-            </div>
-            {/* entry */}
-            <label className='journal-form-label'>
-              <h3>How do you feel?</h3>
-            </label>
-            <div className='form-sections'>
+
+              {/* entry */}
+              <label className='journal-form-label'>
+                <h3>How do you feel?</h3>
+              </label>
+
               <textarea
                 name='entry'
                 placeholder='I feel...'
@@ -121,11 +118,12 @@ export default function AddJournal(props) {
                 const { image } = item;
                 return (
                   <button
-                    value={"hello"}
+                    value={image}
+                    type='button'
                     className={`add-journal-button ${
-                      selected.imageUrl === image ? "selected" : null
+                      journalData.choice === image ? "selected" : null
                     } `}
-                    onClick={() => handleEmotionInput(image)}
+                    onClick={handleEmotionInput}
                   >
                     <img
                       id={image}
@@ -151,7 +149,7 @@ export default function AddJournal(props) {
                 Complete
               </Button>
             </div>
-            {error && <p>Please choose an emotion</p>}
+            {/* {error && <p>Please choose an emotion</p>} */}
           </form>
         </Box>
       </Modal>
