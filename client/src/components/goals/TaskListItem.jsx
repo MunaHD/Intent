@@ -1,5 +1,6 @@
 import { Typography, Chip } from "@mui/material";
 import TodayIcon from "@mui/icons-material/Today";
+import Avatar from "@mui/material/Avatar";
 import moment from "moment";
 import "./home.css";
 
@@ -23,7 +24,7 @@ const TaskListItem = (props) => {
         <div className='task-details-holder'>
           <Typography
             sx={{
-              width: "80%",
+              width: "100%",
             }}
           >
             {details}
@@ -31,7 +32,7 @@ const TaskListItem = (props) => {
           <Chip
             label={`${moment(date).fromNow()}`}
             variant='outlined'
-            sx={{ width: "8rem", color: "#999a9b" }}
+            sx={{ width: "7rem", color: "#999a9b" }}
           />
         </div>
       </div>
