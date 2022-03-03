@@ -272,12 +272,15 @@
   border: none;
   border-radius: 10px;
   margin: 0.5rem;
-  z-index: 9999;
   background-color: #dde6f1 !important;
+}
+.selected {
+  background-color: #a3afbf !important;
 }
 .add-journal-icon {
   width: 25px;
   padding: 0.5rem;
+  z-index: 9;
 }
 
 .journal-form {
@@ -295,10 +298,6 @@
   background-color: #96a2bc;
   border-radius: 5px 5px 12px 12px;
   color: #fff5e7;
-}
-
-.selected {
-  background: #80808055;
 }
 
 #goal {
