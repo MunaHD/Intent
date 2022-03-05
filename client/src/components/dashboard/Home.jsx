@@ -1,5 +1,6 @@
 import Sidebar from "../sidebar/Sidebar";
 import Quote from "./Quote";
+import Graph from "./Graph";
 import LatestTasks from "./LatestTasks";
 import LatestGoals from "./LatestGoals";
 import "../goals/home.css";
@@ -18,6 +19,9 @@ function Home() {
         <div className='task-badge-holder'>
           <LatestTasks />
           <LatestGoals />
+        </div>
+        <div className='quote-card-holder'>
+          <Graph />
         </div>
       </div>
     </div>
