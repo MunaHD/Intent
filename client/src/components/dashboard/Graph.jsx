@@ -33,13 +33,13 @@ export default function Quote() {
   }, []);
   return (
     <Card
-      id='quote-card'
+      id='graph-card'
       sx={{
         width: "90%",
         marginTop: "2rem",
         height: "20vh",
         borderRadius: "15px",
-        boxShadow: "5px 5px 0px 2px #f7faff",
+        backgroundColor: "beige",
       }}
     ></Card>
   );
