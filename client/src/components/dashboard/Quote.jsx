@@ -50,7 +50,7 @@ export default function Quote() {
           }}
           color='text.secondary'
         >
-          It's a wonderful day to chase your dreams!
+          this is the zenquote api card
         </Typography>
       </CardContent>
     </Card>
