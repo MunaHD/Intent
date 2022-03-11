@@ -50,7 +50,7 @@ export default function Quote() {
           }}
           color='text.secondary'
         >
-          this is the zenquote api card
+          {quote}
         </Typography>
       </CardContent>
     </Card>
